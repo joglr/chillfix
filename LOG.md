@@ -4,3 +4,5 @@
 Vi har fået introduktion til projektet, oprettet github repository og lavet en planlægningsdokument i Google Docs.
 Sådan
 hejsa
+
+Jeg har skrevet noget nyt tekst her.
