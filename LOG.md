@@ -2,7 +2,7 @@
 
 ## 22/11/2019
 Vi havde fået introduktion til projekt, oprettet github repository og lavet en planlægningsdokument i Google Docs.
-Sådan
-hejsa
-Jeg har skrevet noget nyt tekst her.
-Nyt på master
+
+## 29/11/2019
+I dag har vi foretaget beslutninger i forhold til projektstruktur og testet hvordan vi bruger scenebuilder, og lave controllere til det vi lavet i SceneBuilder.
+Vi har også lavet et mockup til både MVP og hvordan vi ideelt ser løsningen udformer sig.
