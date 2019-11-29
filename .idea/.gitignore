@@ -1,4 +1,4 @@
 # Default ignored files
 /workspace.xml
-/runConfigurations/Main.xml
-/libraries/lib.xml
+runConfigurations/Main.xml
+libraries/lib.xml
