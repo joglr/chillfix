@@ -11,4 +11,5 @@
             fx:controller="controllers.HomeController"
             prefHeight="400.0" prefWidth="600.0">
     <FlowPane fx:id="container"></FlowPane>
+    <fx:include source="MediaListView.fxml"></fx:include>
 </ScrollPane>

@@ -8,6 +8,7 @@ public class Movie extends Media implements Displayable {
 
     @Override
     public void display() {
+
         // Til en start: Print filmen ud i System.out
         // På et senere tidspunkt: Vis filmen i vores UI.
     }

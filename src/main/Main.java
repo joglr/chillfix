@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import models.CSVReader;
 import models.Movie;
 import models.Series;
 
@@ -17,7 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("./../views/Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../views/MainView.fxml"));
         primaryStage.setTitle("Chill Fix");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
