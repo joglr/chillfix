@@ -23,8 +23,5 @@ public class HomeController {
 
             container.getChildren().add(myCoolButton);
         }
-        Button myCoolButton = new Button("hello");
-
-        container.getChildren().add(myCoolButton);
     }
 }
