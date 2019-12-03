@@ -5,6 +5,6 @@
 <?import javafx.scene.control.Label?>
 <GridPane
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <fx:include source="../views/HomeView.fxml" />
+    <fx:include source="HomeView.fxml" />
 </GridPane>
 

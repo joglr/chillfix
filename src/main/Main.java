@@ -17,20 +17,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-        primaryStage.setTitle("Hello World");
+        Parent root = FXMLLoader.load(getClass().getResource("./../views/Main.fxml"));
+        primaryStage.setTitle("Chill Fix");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
-
-        CSVReader movieData = new CSVReader("data/db/movies.csv");
-        // Read all movies into MovieList
-//        CSVReader seriesData = new CSVReader("data/db/series.csv");
-        // Read all movies into SeriesList
-
-        // Kald
-
-//        for (Media)
-
     }
 
 
