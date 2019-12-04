@@ -36,7 +36,6 @@ public class HomeController {
             Media movie = new Movie(row[0], row[1], row[2], Integer.parseInt(row[3]), Integer.parseInt(row[4]), genres, row[6]);
             mediaList.add(movie);
             uniqueGenres.addAll(Arrays.asList(genres));
-
         }
 
         for (String[] row : seriesRows) {
