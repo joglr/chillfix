@@ -46,7 +46,7 @@ public class HomeController {
             String[] stringNumbers = row[7].substring(1, row[7].length() - 1).split(",");
             Integer[] seasons = Stream.of(stringNumbers).map(Integer::valueOf).toArray(Integer[]::new);
 
-            Media series = new Series(row[0], row[1], row[2], Integer.parseInt(row[4]), genres, row[6], seasons);
+            Media series = new Series(row[0], row[1], Integer.parseInt(row[2]), Integer.parseInt(row[3]), row[4],  genres, row[6], seasons);
             mediaList.add(series);
             uniqueGenres.addAll(Arrays.asList(genres));
 
