@@ -7,11 +7,9 @@ import models.Media;
 import models.Movie;
 import models.Series;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class HomeController {
@@ -64,3 +62,4 @@ public class HomeController {
         }
     }
 }
+
