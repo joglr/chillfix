@@ -3,8 +3,6 @@ package models;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
-import java.util.Arrays;
-
 public class Media implements Displayable {
 
     private String imdbID;
@@ -49,7 +47,7 @@ public class Media implements Displayable {
 
     @Override
     public void display(Pane pane) {
-        String movie = getImdbID() + " " + getTitle() + " (" + getYear() + ") " + getDescription() + " " + Arrays.toString(getGenres()) + " " + getPosterFilePath();
+        String movie = getTitle() + " (" + getYear() + ")";
         System.out.println(movie);
         Button myCoolButton = new Button(movie);
 
