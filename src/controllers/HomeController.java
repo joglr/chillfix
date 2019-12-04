@@ -32,10 +32,7 @@ public class HomeController {
 
             m.display(container);
 
-
-
         }
-
         for (String genre : uniquegenres) {
             System.out.println(genre);
         }

@@ -12,6 +12,7 @@ public class Media implements Displayable {
    private String[] genres;
    private String posterFilePath;
 
+
     public String getImdbID() {
         return imdbID;
     }
@@ -45,6 +46,7 @@ public class Media implements Displayable {
         return posterFilePath;
     }
 
+
     @Override
     public void display(Pane pane) {
         String movie = getTitle() + " (" + getYear() + ")";
@@ -53,4 +55,5 @@ public class Media implements Displayable {
 
         pane.getChildren().add(myCoolButton);
     }
+
 }
