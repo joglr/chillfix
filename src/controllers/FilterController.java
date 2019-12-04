@@ -2,15 +2,15 @@ package controllers;
 
 public class FilterController {
 
-    private String currentFiltres;
-    private String searchFiltres;
-    private String genreFiltres;
+    private String currentFilteres;
+    private String searchFilteres;
+    private String genreFilteres;
 
-    public FilterController(String currentFiltres) {
+    public FilterController(String currentFilteres) {
 
-        this.currentFiltres = currentFiltres;
-        this.genreFiltres = genreFiltres;
-        this.searchFiltres = searchFiltres;
+        this.currentFilteres = currentFilteres;
+        this.genreFilteres = genreFilteres;
+        this.searchFilteres = searchFilteres;
 
     }
 
