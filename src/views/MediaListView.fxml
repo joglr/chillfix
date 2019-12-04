@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text id="welcome text" fill="#367ad9" layoutX="107.0" layoutY="72.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the movies " textAlignment="CENTER" wrappingWidth="432.1376953125" />
+
       <Text layoutX="121.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 idiots" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="91.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -23,28 +23,19 @@
          </image>
       </ImageView>
       <Text layoutX="238.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="American History" />
-      <TextField alignment="CENTER" layoutX="207.0" layoutY="105.0" text=" Search movies" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="393.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../data/img/movie_posters/coco.jpg" />
          </image>
       </ImageView>
       <Text layoutX="430.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coco" />
-      <Text fill="#192cdd" layoutX="43.0" layoutY="259.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Recently added" />
+<!--      <ScrollBar layoutX="607.0" layoutY="51.0" orientation="VERTICAL" prefHeight="604.0" prefWidth="17.0" />-->
+<!--      <Text fill="#192cdd" layoutX="43.0" layoutY="259.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Recently added" />-->
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="91.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../data/img/movie_posters/django_unchained.jpg" />
          </image>
       </ImageView>
       <Text layoutX="85.0" layoutY="658.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Django: Unchained" />
-      <Button layoutX="14.0" layoutY="105.0" mnemonicParsing="false" text="Back" />
-      <ToolBar layoutY="14.0" prefHeight="33.0" prefWidth="94.0">
-        <items>
-          <Button mnemonicParsing="false" text="User" />
-            <Button mnemonicParsing="false" text="Settings" />
-            <Button mnemonicParsing="false" text="Help" />
-            <Button mnemonicParsing="false" text="Log Out" />
-        </items>
-      </ToolBar>
    </children>
 </AnchorPane>
