@@ -1,7 +1,8 @@
 package models;
 
 public class Media {
-   private String imdbID;
+
+    private String imdbID;
    private String title;
    private String description;
    private int year;
