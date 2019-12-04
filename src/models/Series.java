@@ -10,6 +10,10 @@ public class Series extends Media  implements Displayable {
         this.seasons = seasons;
     }
 
+    public Integer[] getSeasons() {
+        return seasons;
+    }
+
     @Override
     public void display(Pane container) {
 

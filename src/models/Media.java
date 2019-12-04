@@ -18,7 +18,7 @@ public class Media implements Displayable {
         return imdbID;
     }
 
-    Media(String imdbID, String title, String description, int year, int rating1, String[] genres, String posterFilePath) {
+    public Media(String imdbID, String title, String description, int year, int rating1, String[] genres, String posterFilePath) {
         this.imdbID = imdbID;
         this.title = title;
         this.description = description;
