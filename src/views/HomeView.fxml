@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
 <ScrollPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.HomeController"
             prefHeight="400.0" prefWidth="600.0">
-    <FlowPane fx:id="container"></FlowPane>
-    <fx:include source="MediaListView.fxml"></fx:include>
+    <FlowPane fx:id="container">
+
+        <Button>hi</Button>
+
+    </FlowPane>
+
+    <!--    <fx:include source="MediaListView.fxml"></fx:include>-->
 </ScrollPane>

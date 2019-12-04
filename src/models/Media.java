@@ -1,6 +1,11 @@
 package models;
 
-public class Media {
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+
+import java.util.Arrays;
+
+public class Media implements Displayable {
 
     private String imdbID;
    private String title;
@@ -40,5 +45,14 @@ public class Media {
 
     public String getPosterFilePath() {
         return posterFilePath;
+    }
+
+    @Override
+    public void display(Pane pane) {
+        String movie = getImdbID() + " " + getTitle() + " (" + getYear() + ") " + getDescription() + " " + Arrays.toString(getGenres()) + " " + getPosterFilePath();
+        System.out.println(movie);
+        Button myCoolButton = new Button(movie);
+
+        pane.getChildren().add(myCoolButton);
     }
 }

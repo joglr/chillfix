@@ -1,7 +1,6 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import models.CSVReader;
 import models.Movie;
@@ -31,10 +30,8 @@ public class HomeController {
             uniquegenres.addAll(Arrays.asList(genres));
 
 
-            //m.display();
-            Button myCoolButton = new Button(row[1]);
+            m.display(container);
 
-            container.getChildren().add(myCoolButton);
 
 
         }
