@@ -58,7 +58,6 @@ public class Media implements Displayable {
         String movie = getTitle() + " (" + getYear() + ")";
         System.out.println(movie);
         Button myCoolButton = new Button(movie);
-
         pane.getChildren().add(myCoolButton);
     }
 
