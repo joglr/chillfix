@@ -24,7 +24,7 @@ public class HomeController {
 
         for (String[] row : movies) {
             String[] genres = row[5].substring(1, row[5].length() - 1).split(",");
-            Movie m = new Movie(row[0], row[1], row[2], Integer.parseInt(row[4]), genres, row[6]);
+            Movie m = new Movie(row[0], row[1], row[2], Integer.parseInt(row[3]), Integer.parseInt(row[4]), genres, row[6]);
 
 
             uniquegenres.addAll(Arrays.asList(genres));

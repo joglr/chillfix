@@ -9,6 +9,7 @@ public class Media implements Displayable {
    private String title;
    private String description;
    private int year;
+    private int rating1;
    private String[] genres;
    private String posterFilePath;
 
@@ -17,11 +18,12 @@ public class Media implements Displayable {
         return imdbID;
     }
 
-    Media(String imdbID, String title, String description, int year, String[] genres, String posterFilePath) {
+    Media(String imdbID, String title, String description, int year, int rating1, String[] genres, String posterFilePath) {
         this.imdbID = imdbID;
         this.title = title;
         this.description = description;
         this.year = year;
+        this.rating1 = rating1;
         this.genres = genres;
         this.posterFilePath = posterFilePath;
     }
