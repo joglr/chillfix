@@ -55,7 +55,11 @@ public class MainController implements Initializable {
         }
         displayMedia();
         for (String genre : uniqueGenres) {
-            genresContainer.getChildren().add(new ToggleButton(genre.substring(0, 1).toUpperCase() + genre.substring(1)));
+            int genreCount = 0;
+            for (Media m : mediaList) {
+                if (Arrays.asList(m.getGenres()).contains(genre)) genreCount++;
+            }
+            genresContainer.getChildren().add(new ToggleButton(genre.substring(0, 1).toUpperCase() + genre.substring(1) + " [" + genreCount +"]"));
         }
     }
 
