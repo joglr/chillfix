@@ -11,10 +11,9 @@ import models.Series;
 
 import java.net.URL;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class HomeController {
+public class HomeController implements Initializable {
 
     @FXML
     FlowPane container;
