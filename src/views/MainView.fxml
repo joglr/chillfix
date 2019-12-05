@@ -11,48 +11,87 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-<top>
-    <VBox>
-  <MenuBar>
-    <menus>
-      <Menu mnemonicParsing="false" text="File">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Close" />
-        </items>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Edit">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Delete" />
-        </items>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Help">
-        <items>
-          <MenuItem mnemonicParsing="false" text="About" />
-        </items>
-      </Menu>
-    </menus>
-  </MenuBar>
-    <HBox>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chillfix" textAlignment="CENTER">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Text>
-    </HBox>
-    <ToolBar prefHeight="35.0">
-        <items>
-            <Button mnemonicParsing="false" text="User" />
-            <Button mnemonicParsing="false" text="Settings" />
-            <Button mnemonicParsing="false" text="Help" />
-            <Button mnemonicParsing="false" text="Log Out" />
-        </items>
-    </ToolBar>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.ScrollPane?>
+<BorderPane fx:controller="controllers.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <VBox>
+            <MenuBar>
+                <menus>
+                    <Menu mnemonicParsing="false" text="File">
+                        <items>
+                            <MenuItem mnemonicParsing="false" text="Close" />
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                            <MenuItem mnemonicParsing="false" text="Delete" />
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                            <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <HBox>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chillfix" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Text>
+            </HBox>
+            <ToolBar prefHeight="35.0">
+                <items>
+                    <Button mnemonicParsing="false" text="User" />
+                    <Button mnemonicParsing="false" text="Settings" />
+                    <Button mnemonicParsing="false" text="Help" />
+                    <Button mnemonicParsing="false" text="Log Out" />
+                </items>
+            </ToolBar>
+            <HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+                <TextField promptText="Søg...">
+                    <padding>
+                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+                    </padding>
+                </TextField>
+                <ChoiceBox fx:id="genreChoiceBox" />
+                <Button mnemonicParsing="false" text="Movies">
+                    <padding>
+                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+                    </padding>
+                </Button>
+                <Button mnemonicParsing="false" text="Series">
+                    <padding>
+                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+                    </padding>
+                </Button>
+                <Button mnemonicParsing="false" text="My list">
+                    <padding>
+                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+                    </padding>
+                </Button>
+                <Button mnemonicParsing="false" text="Reset">
+                    <padding>
+                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+                    </padding>
+                </Button>
 
-        <fx:include source="FilterView.fxml" />
-    </VBox>
-   </top>
-   <center>
-    <fx:include source="HomeView.fxml" />
-   </center>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+            <content>
+                <FlowPane fx:id="container" alignment="TOP_CENTER" hgap="8.0" vgap="8.0">
+                    <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                    </padding></FlowPane>
+            </content>
+        </ScrollPane>
+    </center>
 </BorderPane>

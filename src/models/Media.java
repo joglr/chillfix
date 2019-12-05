@@ -1,11 +1,14 @@
 package models;
 
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public abstract class Media implements Displayable {
 
@@ -54,7 +57,12 @@ public abstract class Media implements Displayable {
 
     public Node render() {
         VBox container = new VBox();
-        String movie = getTitle() + " (" + getYear() + ")";
+//        String movie = getTitle() + " (" + getYear() + ")";
+//        Text title = new Text(getTitle());
+        Tooltip.install(container, new Tooltip(getTitle()));
+
+//        title.setStyle("-fx-text-overrun: false;");
+//        container.getChildren().add(title);
         Image poster = null;
 
         container.setPrefHeight(200);
@@ -65,15 +73,27 @@ public abstract class Media implements Displayable {
             poster = new Image(this.getPosterFilePath());
         } catch (RuntimeException e) {
             System.out.println("*** IllegalArgumentException " + this.getPosterFilePath());
-            poster = new Image("file:data/img/PlaceholderThumbnail.png");
+//            poster = new Image("file:data/img/PlaceholderThumbnail.png");
+
         } finally {
             ImageView imageView = new ImageView(poster);
             imageView.setPreserveRatio(true);
             imageView.setFitWidth(150);
-            container.getChildren().add(imageView);
+
+            BackgroundImage myBI= new BackgroundImage(new Image(this.getPosterFilePath()),
+                    BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                    BackgroundSize.DEFAULT);
+//then you set to your node
+            container.setBackground(new Background(myBI));
+//        container.setStyle("-fx-background-image: url(\"" + this.getPosterFilePath() +"\");");
+//            container.getChildren().add(imageView);
+            container.setId("#card");
         }
 
         Button myCoolButton = new Button("Gem");
+        Region expandRegion = new Region();
+        VBox.setVgrow(expandRegion, Priority.ALWAYS);
+        container.getChildren().add(expandRegion);
         container.getChildren().add(myCoolButton);
 
         return container;

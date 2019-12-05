@@ -1,8 +1,10 @@
 package controllers;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.FlowPane;
 import models.CSVReader;
 import models.Media;
@@ -13,11 +15,14 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class HomeController implements Initializable {
+public class MainController implements Initializable {
 
     @FXML
     FlowPane container;
     private List<Media> mediaList = new ArrayList<Media>();
+
+    @FXML
+    ChoiceBox genreChoiceBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,6 +55,8 @@ public class HomeController implements Initializable {
             uniqueGenres.addAll(Arrays.asList(genres));
         }
         displayMedia();
+        genreChoiceBox.setItems(FXCollections.observableArrayList(uniqueGenres));
+
     }
 
     private String[] parseGenres(String rowString) {
