@@ -31,27 +31,21 @@ public abstract class Media implements Displayable {
     public String getImdbID() {
         return imdbID;
     }
-
     public int getRating() {
         return rating;
     }
-
     public String getTitle() {
         return title;
     }
-
     public String getDescription() {
         return description;
     }
-
     public int getYear() {
         return year;
     }
-
     public String[] getGenres() {
         return genres;
     }
-
     public String getPosterFileName() {
         return posterFilePath;
     }
@@ -62,17 +56,25 @@ public abstract class Media implements Displayable {
         VBox container = new VBox();
         String movie = getTitle() + " (" + getYear() + ")";
         Image poster = null;
-        Button myCoolButton = new Button("Tilføj til min liste");
 
-        container.getChildren().add(myCoolButton);
+        container.setPrefHeight(200);
+
+
+        container.setPrefWidth(150);
         try {
             poster = new Image(this.getPosterFilePath());
         } catch (RuntimeException e) {
             System.out.println("*** IllegalArgumentException " + this.getPosterFilePath());
             poster = new Image("file:data/img/PlaceholderThumbnail.png");
         } finally {
-            container.getChildren().add(new ImageView(poster));
+            ImageView imageView = new ImageView(poster);
+            imageView.setPreserveRatio(true);
+            imageView.setFitWidth(150);
+            container.getChildren().add(imageView);
         }
+
+        Button myCoolButton = new Button("Gem");
+        container.getChildren().add(myCoolButton);
 
         return container;
     }
