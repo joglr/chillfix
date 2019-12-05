@@ -1,5 +1,6 @@
 package models;
 
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
@@ -53,13 +54,18 @@ public class Media implements Displayable {
     }
 
 
-    @Override
-    public void display(Pane pane) {
+
+    public Node render() {
         String movie = getTitle() + " (" + getYear() + ")";
         System.out.println(movie);
         Button myCoolButton = new Button(movie);
 
-        pane.getChildren().add(myCoolButton);
+        return myCoolButton;
+    }
+
+    @Override
+    public void display(Pane pane) {
+        pane.getChildren().add(render());
     }
 
 }
