@@ -2,48 +2,32 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <HBox>
+<?import javafx.scene.layout.HBox?>
+<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <TextField promptText="Søg...">
+        <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+        </padding>
+    </TextField>
+    <Button mnemonicParsing="false" text="Movies">
+        <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+        </padding>
+    </Button>
+    <Button mnemonicParsing="false" text="Series">
+        <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+        </padding>
+    </Button>
+    <Button mnemonicParsing="false" text="My list">
+        <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+        </padding>
+    </Button>
+    <Button mnemonicParsing="false" text="Reset">
+        <padding>
+            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+        </padding>
+    </Button>
 
-       <VBox prefHeight="200.0" prefWidth="527.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="0.0" prefWidth="0.0" spacing="8.0">
-               <children>
-                  <TextField promptText="Søg...">
-                     <padding>
-                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-                     </padding>
-                  </TextField>
-                  <Button mnemonicParsing="false" text="Movies">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <padding>
-                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-                     </padding>
-                  </Button>
-                  <Button mnemonicParsing="false" text="Series">
-                     <padding>
-                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-                     </padding>
-                  </Button>
-                  <Button mnemonicParsing="false" text="My list">
-                     <padding>
-                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-                     </padding>
-                  </Button>
-                  <Button mnemonicParsing="false" text="Reset">
-                     <padding>
-                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-                     </padding>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-    </HBox>
-</AnchorPane>
+</HBox>

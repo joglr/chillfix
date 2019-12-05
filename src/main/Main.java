@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../views/MainView.fxml"));
         primaryStage.setTitle("Chill Fix");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 1280/1.5, 720 / 1.5));
         primaryStage.show();
     }
 
