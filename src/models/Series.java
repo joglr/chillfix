@@ -22,4 +22,8 @@ public class Series extends Media  {
         return seasons;
     }
 
+    @Override
+    public String getPosterFilePath() {
+        return "file:data/img/series_thumbs/" + super.getPosterFileName();
+    }
 }

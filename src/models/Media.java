@@ -2,22 +2,21 @@ package models;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
-public class Media implements Displayable {
+public abstract class Media implements Displayable {
 
     private String imdbID;
-   private String title;
-   private String description;
-   private int year;
+    private String title;
+    private String description;
+    private int year;
     private int rating;
-   private String[] genres;
-   private String posterFilePath;
+    private String[] genres;
+    private String posterFilePath;
 
-
-    public String getImdbID() {
-        return imdbID;
-    }
 
     public Media(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath) {
         this.imdbID = imdbID;
@@ -27,6 +26,10 @@ public class Media implements Displayable {
         this.year = year;
         this.genres = genres;
         this.posterFilePath = posterFilePath;
+    }
+
+    public String getImdbID() {
+        return imdbID;
     }
 
     public int getRating() {
@@ -49,18 +52,29 @@ public class Media implements Displayable {
         return genres;
     }
 
-    public String getPosterFilePath() {
+    public String getPosterFileName() {
         return posterFilePath;
     }
 
-
+    public abstract String getPosterFilePath();
 
     public Node render() {
+        VBox container = new VBox();
         String movie = getTitle() + " (" + getYear() + ")";
-        System.out.println(movie);
-        Button myCoolButton = new Button(movie);
+        Image poster = null;
+        Button myCoolButton = new Button("Tilføj til min liste");
 
-        return myCoolButton;
+        container.getChildren().add(myCoolButton);
+        try {
+            poster = new Image(this.getPosterFilePath());
+        } catch (RuntimeException e) {
+            System.out.println("*** IllegalArgumentException " + this.getPosterFilePath());
+            poster = new Image("file:data/img/PlaceholderThumbnail.png");
+        } finally {
+            container.getChildren().add(new ImageView(poster));
+        }
+
+        return container;
     }
 
     @Override
