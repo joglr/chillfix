@@ -1,10 +1,9 @@
 package controllers;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
 import models.CSVReader;
 import models.Media;
@@ -19,10 +18,9 @@ public class MainController implements Initializable {
 
     @FXML
     FlowPane container;
-    private List<Media> mediaList = new ArrayList<Media>();
-
     @FXML
-    ChoiceBox genreChoiceBox;
+    FlowPane genresContainer;
+    private List<Media> mediaList = new ArrayList<Media>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -33,6 +31,7 @@ public class MainController implements Initializable {
         List<String[]> seriesRows = seriesData.getDataList();
 
         HashSet<String> uniqueGenres = new HashSet<>();
+        uniqueGenres.add("all");
 
         for (String[] row : movieRows) {
             String[] genres = parseGenres(row[5]);
@@ -55,8 +54,9 @@ public class MainController implements Initializable {
             uniqueGenres.addAll(Arrays.asList(genres));
         }
         displayMedia();
-        genreChoiceBox.setItems(FXCollections.observableArrayList(uniqueGenres));
-
+        for (String genre : uniqueGenres) {
+            genresContainer.getChildren().add(new ToggleButton(genre.substring(0, 1).toUpperCase() + genre.substring(1)));
+        }
     }
 
     private String[] parseGenres(String rowString) {
