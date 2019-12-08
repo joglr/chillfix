@@ -1,7 +1,5 @@
 package models;
 
-import javafx.scene.layout.Pane;
-
 public class Series extends Media  {
     Integer[] seasons;
 
@@ -20,6 +18,11 @@ public class Series extends Media  {
 
     public Integer[] getSeasons() {
         return seasons;
+    }
+
+    @Override
+    MediaTypes getMediaType() {
+        return MediaTypes.SERIES;
     }
 
     @Override

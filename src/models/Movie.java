@@ -8,6 +8,11 @@ public class Movie extends Media {
     }
 
     @Override
+    MediaTypes.MediaType getMediaType() {
+        return MediaTypes.MediaType.MOVIE;
+    }
+
+    @Override
     public String getPosterFilePath() {
         return "file:data/img/movie_thumbs/" + super.getPosterFileName();
     }

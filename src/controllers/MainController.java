@@ -1,14 +1,12 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
-import models.CSVReader;
-import models.Media;
-import models.Movie;
-import models.Series;
+import models.*;
 
 import java.net.URL;
 import java.util.*;
@@ -21,6 +19,10 @@ public class MainController implements Initializable {
     @FXML
     FlowPane genresContainer;
     private List<Media> mediaList = new ArrayList<Media>();
+    //    private List<Filter> filters = new ArrayList<Filter>();
+    private Object typeFilter;
+    private Filter genreFilter;
+    private Filter searchFilter;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,10 +71,29 @@ public class MainController implements Initializable {
 
     public void displayMedia() {
         for (Media media : mediaList) {
+            if (typeFilter != null && !typeFilter.matches(media)) return;
+            if (genreFilter != null && !genreFilter.matches(media)) return;
+            if (searchFilter != null && !searchFilter.matches(media)) return;
             Node node = media.render();
             container.getChildren().add(node);
         }
     }
 
+    public void show_movies(ActionEvent movieChosen) {
+
+        displayMedia();
+    }
+
+    public void show_series(ActionEvent seriesChosen) {
+        typeFilter = Series;
+        displayMedia();
+    }
+
+    public void resetFilters(ActionEvent resetFilters) {
+        typeFilter = null;
+        genreFilter = null;
+        searchFilter = null;
+        displayMedia();
+    }
 }
 
