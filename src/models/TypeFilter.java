@@ -7,11 +7,7 @@ public class TypeFilter implements Filter {
         this.type = type;
     }
 
-    public Media.Type getType() {
-        return type;
-    }
     @Override
-
     public Boolean matches(Media m) {
         return m.getType() == type;
     }
