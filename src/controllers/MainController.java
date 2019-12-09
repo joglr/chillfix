@@ -79,6 +79,17 @@ public class MainController implements Initializable {
         }
     }
 
+
+    public void show_movies(ActionEvent movieChosen) {
+
+        displayMedia();
+    }
+
+    public void show_series(ActionEvent seriesChosen) {
+        typeFilter = Series;
+        displayMedia();
+    }
+
     public void show_movies(ActionEvent movieChosen) {
 
         displayMedia();
