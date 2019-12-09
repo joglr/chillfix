@@ -21,8 +21,8 @@ public class Series extends Media  {
     }
 
     @Override
-    MediaTypes getMediaType() {
-        return MediaTypes.SERIES;
+    Type getType() {
+        return null;
     }
 
     @Override

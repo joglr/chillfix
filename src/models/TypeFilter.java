@@ -1,18 +1,18 @@
 package models;
 
 public class TypeFilter implements Filter {
-    @Override
-    private Media type;
+    private Media.Type type;
 
-    public TypeFilter(Media type) {
+    public TypeFilter(Media.Type type) {
         this.type = type;
     }
 
-    public Media getType() {
+    public Media.Type getType() {
         return type;
     }
+    @Override
 
     public Boolean matches(Media m) {
-        return m instanceof;
+        return m.getType() == type;
     }
 }

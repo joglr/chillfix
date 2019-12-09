@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 public abstract class Media implements Displayable {
-    abstract MediaTypes getMediaType();
     private String imdbID;
     private String title;
     private String description;
@@ -16,6 +15,7 @@ public abstract class Media implements Displayable {
     private int rating;
     private String[] genres;
     private String posterFilePath;
+    public enum Type { SERIES, MOVIE }
 
     public Media(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath) {
         this.imdbID = imdbID;
@@ -27,7 +27,7 @@ public abstract class Media implements Displayable {
         this.posterFilePath = posterFilePath;
     }
 
-    enum MediaTypes {MOVIE, SERIES}
+    abstract Type getType();
 
     public String getImdbID() {
         return imdbID;
@@ -95,5 +95,8 @@ public abstract class Media implements Displayable {
     public void display(Pane pane) {
         pane.getChildren().add(render());
     }
+
+    public Boolean isMovie() { return false; }
+    public Boolean isSeries() { return false; }
 
 }

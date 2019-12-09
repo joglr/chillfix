@@ -19,8 +19,7 @@ public class MainController implements Initializable {
     @FXML
     FlowPane genresContainer;
     private List<Media> mediaList = new ArrayList<Media>();
-    //    private List<Filter> filters = new ArrayList<Filter>();
-    private Object typeFilter;
+    private Filter typeFilter;
     private Filter genreFilter;
     private Filter searchFilter;
 
@@ -79,24 +78,13 @@ public class MainController implements Initializable {
         }
     }
 
-
     public void show_movies(ActionEvent movieChosen) {
-
+        typeFilter = new TypeFilter(Media.Type.MOVIE);
         displayMedia();
     }
 
     public void show_series(ActionEvent seriesChosen) {
-        typeFilter = Series;
-        displayMedia();
-    }
-
-    public void show_movies(ActionEvent movieChosen) {
-
-        displayMedia();
-    }
-
-    public void show_series(ActionEvent seriesChosen) {
-        typeFilter = Series;
+        typeFilter = new TypeFilter(Media.Type.SERIES);
         displayMedia();
     }
 
