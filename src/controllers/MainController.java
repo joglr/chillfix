@@ -71,10 +71,6 @@ public class MainController implements Initializable {
 
     public void displayMedia() {
         for (Media media : mediaList) {
-            if (typeFilter != null && !typeFilter.matches(media)) return;
-            if (genreFilter != null && !genreFilter.matches(media)) return;
-            if (searchFilter != null && !searchFilter.matches(media)) return;
-
             MediaCard mediaCard = new MediaCard(media);
             Node node = mediaCard.render();
             container.getChildren().add(node);
