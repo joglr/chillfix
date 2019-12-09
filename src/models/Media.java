@@ -95,8 +95,4 @@ public abstract class Media implements Displayable {
     public void display(Pane pane) {
         pane.getChildren().add(render());
     }
-
-    public Boolean isMovie() { return false; }
-    public Boolean isSeries() { return false; }
-
 }
