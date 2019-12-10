@@ -8,8 +8,8 @@ public class Movie extends Media {
     }
 
     @Override
-    Type getType() {
-        return Type.MOVIE;
+    public Type getType() {
+        return Media.Type.MOVIE;
     }
 
     @Override

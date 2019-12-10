@@ -27,7 +27,7 @@ public abstract class Media implements Displayable {
         this.posterFilePath = posterFilePath;
     }
 
-    abstract Type getType();
+    public abstract Type getType();
 
     public String getImdbID() {
         return imdbID;
@@ -37,7 +37,7 @@ public abstract class Media implements Displayable {
         return rating;
     }
 
-    public String getTitle() {
+    private String getTitle() {
         return title;
     }
 
@@ -53,7 +53,7 @@ public abstract class Media implements Displayable {
         return genres;
     }
 
-    public String getPosterFileName() {
+    String getPosterFileName() {
         return posterFilePath;
     }
 

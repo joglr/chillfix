@@ -16,9 +16,11 @@ public class MainController implements Initializable {
 
     @FXML
     FlowPane container;
+
     @FXML
     FlowPane genresContainer;
-    private List<Media> mediaList = new ArrayList<Media>();
+
+    private List<Media> mediaList = new ArrayList<>();
     private Filter typeFilter;
     private Filter genreFilter;
     private Filter searchFilter;
@@ -68,31 +70,48 @@ public class MainController implements Initializable {
         return rowString.substring(1, rowString.length() - 1).split(",");
     }
 
-    public void displayMedia() {
+    private void displayMedia() {
+        System.out.println("Re-rendering");
+        int renderCount = 0;
+        container.getChildren().clear();
         for (Media media : mediaList) {
-            if (typeFilter != null && !typeFilter.matches(media)) return;
-            if (genreFilter != null && !genreFilter.matches(media)) return;
-            if (searchFilter != null && !searchFilter.matches(media)) return;
+            if ((typeFilter != null && !typeFilter.matches(media)) ||
+                    (genreFilter != null && !genreFilter.matches(media)) ||
+                    (searchFilter != null && !searchFilter.matches(media))) {
+                System.out.println("This doesn't match any filters");
+                System.out.println("Type: " + media.getType().toString());
+                continue;
+            }
+
             Node node = media.render();
             container.getChildren().add(node);
+            renderCount++;
         }
+        System.out.println("Rendered " + renderCount + " elements");
     }
 
+    @FXML
     public void showAll(ActionEvent movieChosen) {
+        System.out.println("Both movies and series");
         typeFilter = null;
         displayMedia();
     }
 
+    @FXML
     public void showMovies(ActionEvent movieChosen) {
+        System.out.println("Showing only movies");
         typeFilter = new TypeFilter(Media.Type.MOVIE);
         displayMedia();
     }
 
+    @FXML
     public void showSeries(ActionEvent seriesChosen) {
+        System.out.println("Showing only series");
         typeFilter = new TypeFilter(Media.Type.SERIES);
         displayMedia();
     }
 
+    @FXML
     public void resetFilters(ActionEvent resetFilters) {
         typeFilter = null;
         genreFilter = null;
@@ -100,4 +119,3 @@ public class MainController implements Initializable {
         displayMedia();
     }
 }
-
