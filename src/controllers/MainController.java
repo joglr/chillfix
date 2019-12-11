@@ -130,7 +130,6 @@ public class MainController implements Initializable {
     }
 
     public void searchType() {
-//        if (searchField.getText().length() == 0)
-        searchMedia();
+        if (searchField.getText().length() == 0) searchMedia();
     }
 }
