@@ -37,15 +37,15 @@ public abstract class Media implements Displayable {
         return rating;
     }
 
-    private String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public int getYear() {
+    int getYear() {
         return year;
     }
 
