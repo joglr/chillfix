@@ -32,7 +32,7 @@ public abstract class Media {
         return rating;
     }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
