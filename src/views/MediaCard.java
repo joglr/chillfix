@@ -1,5 +1,6 @@
 package views;
 
+
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -7,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import models.Media;
+
 
 public class MediaCard {
     private final Media media;
