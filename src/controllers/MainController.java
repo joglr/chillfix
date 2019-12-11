@@ -3,8 +3,10 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
+import models.*;
 import models.CSVReader;
 import models.Media;
 import models.Movie;
@@ -20,9 +22,17 @@ public class MainController implements Initializable {
 
     @FXML
     FlowPane container;
+
     @FXML
     FlowPane genresContainer;
-    private List<Media> mediaList = new ArrayList<Media>();
+
+    @FXML
+    TextField searchField;
+
+    private List<Media> mediaList = new ArrayList<>();
+    private Filter typeFilter;
+    private Filter genreFilter;
+    private Filter searchFilter;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,13 +79,58 @@ public class MainController implements Initializable {
         return rowString.substring(1, rowString.length() - 1).split(",");
     }
 
-    public void displayMedia() {
+    private void displayMedia() {
+        System.out.println("Re-rendering");
+        int renderCount = 0;
+        container.getChildren().clear();
         for (Media media : mediaList) {
+            if (renderCount > 50) break;
+            if ((typeFilter != null && !typeFilter.matches(media)) ||
+                    (genreFilter != null && !genreFilter.matches(media)) ||
+                    (searchFilter != null && !searchFilter.matches(media))) continue;
+
             MediaCard mediaCard = new MediaCard(media);
             Node node = mediaCard.render();
             container.getChildren().add(node);
+            renderCount++;
         }
+        System.out.println("Rendered " + renderCount + " elements");
     }
 
-}
+    @FXML
+    public void showAll() {
+        typeFilter = null;
+        displayMedia();
+    }
 
+    @FXML
+    public void showMovies() {
+        typeFilter = new TypeFilter(Media.Type.MOVIE);
+        displayMedia();
+    }
+
+    @FXML
+    public void showSeries() {
+        typeFilter = new TypeFilter(Media.Type.SERIES);
+        displayMedia();
+    }
+
+    @FXML
+    public void resetFilters() {
+        typeFilter = null;
+        genreFilter = null;
+        searchFilter = null;
+        displayMedia();
+    }
+
+    public void searchMedia() {
+        String searchString = searchField.getText();
+        searchFilter = searchString.length() == 0 ? null : new SearchFilter(searchString);
+        displayMedia();
+    }
+
+    public void searchType() {
+//        if (searchField.getText().length() == 0)
+        searchMedia();
+    }
+}

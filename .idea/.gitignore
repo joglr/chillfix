@@ -2,3 +2,5 @@
 /workspace.xml
 runConfigurations/Main.xml
 libraries/lib.xml
+# Default ignored files
+/shelf/

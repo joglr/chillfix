@@ -10,6 +10,7 @@ public abstract class Media {
     private int rating;
     private String[] genres;
     private String posterFilePath;
+    public enum Type { SERIES, MOVIE }
 
     public Media(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath) {
         this.imdbID = imdbID;
@@ -20,6 +21,8 @@ public abstract class Media {
         this.genres = genres;
         this.posterFilePath = posterFilePath;
     }
+
+    public abstract Type getType();
 
     public String getImdbID() {
         return imdbID;
@@ -33,11 +36,11 @@ public abstract class Media {
         return title;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public int getYear() {
+    int getYear() {
         return year;
     }
 
@@ -45,7 +48,7 @@ public abstract class Media {
         return genres;
     }
 
-    public String getPosterFileName() {
+    String getPosterFileName() {
         return posterFilePath;
     }
 
