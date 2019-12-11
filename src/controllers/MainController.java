@@ -7,6 +7,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
 import models.*;
+import models.CSVReader;
+import models.Media;
+import models.Movie;
+import models.Series;
+import models.*;
+import views.MediaCard;
 
 import java.net.URL;
 import java.util.*;
@@ -83,7 +89,8 @@ public class MainController implements Initializable {
                     (genreFilter != null && !genreFilter.matches(media)) ||
                     (searchFilter != null && !searchFilter.matches(media))) continue;
 
-            Node node = media.render();
+            MediaCard mediaCard = new MediaCard(media);
+            Node node = mediaCard.render();
             container.getChildren().add(node);
             renderCount++;
         }
