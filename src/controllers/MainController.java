@@ -3,18 +3,14 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
-import models.*;
-import models.CSVReader;
-import models.Media;
-import models.Movie;
-import models.Series;
 import models.*;
 import views.MediaCard;
 
 import java.net.URL;
+import java.text.Collator;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -66,13 +62,36 @@ public class MainController implements Initializable {
             uniqueGenres.addAll(Arrays.asList(genres));
         }
         displayMedia();
-        for (String genre : uniqueGenres) {
-            int genreCount = 0;
-            for (Media m : mediaList) {
-                if (Arrays.asList(m.getGenres()).contains(genre)) genreCount++;
-            }
-            genresContainer.getChildren().add(new ToggleButton(genre.substring(0, 1).toUpperCase() + genre.substring(1) + " [" + genreCount + "]"));
-        }
+//        for (String genre : uniqueGenres) {
+//            int genreCount = 0;
+//            for (Media m : mediaList) {
+//                if (Arrays.asList(m.getGenres()).contains(genre)) genreCount++;
+//            }
+//            genresContainer.getChildren().add(new ToggleButton(genre.substring(0, 1).toUpperCase() + genre.substring(1) + " [" + genreCount + "]"));
+//        }
+
+        ChoiceBox genreSelect = new ChoiceBox();
+
+        // Sort genres alphabetically
+        Collection<String> genres =
+                new TreeSet<>(Collator.getInstance());
+        genres.add("All");
+        genres.addAll(uniqueGenres);
+//        Stream.of(genres).map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).toArray(String[]::new)
+
+//        ArrayList<String> sortedGenres = java.util.Collections.sort(genres, Collator.getInstance());
+
+        genreSelect.getItems().addAll(genres);
+        genreSelect.setValue("All");
+        genreSelect.getStyleClass().add(("test"));
+        genreSelect.idProperty().set("test");
+//        genreSelect.setStyle("-fx-font-size:  30px");
+
+
+        // Capitalize
+        // String cap = str.substring(0, 1).toUpperCase() + str.substring(1);
+
+        genresContainer.getChildren().add(genreSelect);
     }
 
     private String[] parseGenres(String rowString) {

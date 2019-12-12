@@ -4,3 +4,11 @@
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
 }
+
+.test {
+    -fx-border-color: red;
+    -fx-border-width: 10px;
+    -fx-text-fill: blue;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+}

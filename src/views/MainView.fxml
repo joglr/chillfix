@@ -39,7 +39,6 @@
                     </padding>
                 </Button>
             </ToolBar>
-
             <HBox alignment="CENTER" spacing="8.0">
                 <TextField fx:id="searchField" maxWidth="300" onAction="#searchMedia"
                            onKeyTyped="#searchType" promptText="Søg...">

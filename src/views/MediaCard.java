@@ -1,12 +1,18 @@
 package views;
 
+import controllers.RootController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import models.Media;
+
+import java.io.IOException;
 
 public class MediaCard {
     private final Media media;
@@ -40,9 +46,20 @@ public class MediaCard {
 
         Button myCoolButton = new Button("Gem");
         Region expandRegion = new Region();
+        myCoolButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("../views/mediaViewTest.fxml"));
+                RootController.setCurrentRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         VBox.setVgrow(expandRegion, Priority.ALWAYS);
         container.getChildren().add(expandRegion);
         container.getChildren().add(myCoolButton);
+
+        myCoolButton.getStyleClass().add("test");
 
         return container;
     }
