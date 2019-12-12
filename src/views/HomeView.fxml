@@ -10,7 +10,7 @@
             fx:controller="controllers.HomeViewController">
     <top>
         <VBox alignment="CENTER">
-            <MenuBar>
+            <!-- <MenuBar>
                 <Menu mnemonicParsing="false" text="File">
                     <MenuItem mnemonicParsing="false" text="Close"/>
                 </Menu>
@@ -20,7 +20,7 @@
                 <Menu mnemonicParsing="false" text="Help">
                     <MenuItem mnemonicParsing="false" text="About"/>
                 </Menu>
-            </MenuBar>
+            </MenuBar> -->
             <HBox>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chillfix" textAlignment="CENTER">
                     <font>
@@ -69,9 +69,9 @@
                 <ChoiceBox fx:id="genreChoiceBox" />
                 <TextField fx:id="searchField" maxWidth="300" onAction="#searchMedia" onKeyTyped="#searchType"
                            promptText="Søg...">
-                    <padding>
+                    <!-- <padding>
                         <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
-                    </padding>
+                    </padding> -->
                 </TextField>
             </HBox>
         </VBox>
