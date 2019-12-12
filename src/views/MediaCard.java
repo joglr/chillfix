@@ -10,9 +10,15 @@ import models.Media;
 
 public class MediaCard {
     private final Media media;
+    private boolean isButtonVisible = true;
 
     public MediaCard(Media media) {
         this.media = media;
+    }
+
+    MediaCard(Media media, boolean isButtonVisible) {
+        this(media);
+        this.isButtonVisible = isButtonVisible;
     }
 
     public Node render() {
@@ -38,12 +44,14 @@ public class MediaCard {
             container.setId("#card");
         }
 
-        Button myCoolButton = new Button("Gem");
-        Region expandRegion = new Region();
-        VBox.setVgrow(expandRegion, Priority.ALWAYS);
-        container.getChildren().add(expandRegion);
-        container.getChildren().add(myCoolButton);
+        if (isButtonVisible) {
+            Button myCoolButton = new Button("Gem");
+            Region expandRegion = new Region();
+            VBox.setVgrow(expandRegion, Priority.ALWAYS);
+            container.getChildren().add(expandRegion);
 
+            container.getChildren().add(myCoolButton);
+        }
         return container;
     }
 }
