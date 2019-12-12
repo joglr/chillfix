@@ -43,3 +43,9 @@
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;
 }
+
+.FilteringSection {
+    -fx-border-color: #333;
+    -fx-border-radius: 8px;
+
+}

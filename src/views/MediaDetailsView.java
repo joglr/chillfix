@@ -47,6 +47,8 @@ public class MediaDetailsView {
         title.setStyle("-fx-font-size: 25px");
         Text description = new Text(media.getDescription());
         description.setStyle("-fx-font-style: italic");
+        description.wrappingWidthProperty().setValue(400);
+
         Text year = new Text("Årstal: " + media.getYear());
         Text rating = new Text("Anmeldelser: " + media.getRating() + "% kunne lide denne " + (media.getType() == Media.Type.SERIES ? "serie" : "film"));
         Text genre = new Text("Genre: " + String.join(", ", Arrays.asList(media.getGenres())));
@@ -55,12 +57,12 @@ public class MediaDetailsView {
             // TODO: List out seasons
         }
 
-        description.wrappingWidthProperty().setValue(400);
-
         container.setTop(backButton);
         container.setLeft(left);
         container.setMaxWidth(600);
+        container.setMaxHeight(400);
         container.setRight(right);
+
         left.setSpacing(5);
         left.getChildren().addAll(title, description, year, rating, genre, expandRegion, leftBottomButtons);
         leftBottomButtons.getChildren().addAll(AddToMyListButton, DeleteFromMyListButton);

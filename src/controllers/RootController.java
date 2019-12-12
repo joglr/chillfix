@@ -24,9 +24,6 @@ public class RootController {
         primaryStage.setScene(globalScene);
         globalScene.getStylesheets().add(rootClass.getResource("../styles/main.css").toExternalForm());
         primaryStage.show();
-        System.out.println("is this thing on?");
-
-//        RootController.setCurrentRoot(root);
     }
 
     public static void setCurrentRoot(Parent root) {

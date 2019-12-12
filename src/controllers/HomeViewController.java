@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -179,5 +180,11 @@ public class HomeViewController implements Initializable {
 
     public void searchType() {
         if (searchField.getText().length() == 0) searchMedia();
+    }
+
+    public void filterByGenre(ActionEvent actionEvent) {
+        String value = genreChoiceBox.getValue().toString();
+        genreFilter = value == "all" ? null : new GenreFilter(value);
+        displayMedia();
     }
 }
