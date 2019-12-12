@@ -26,7 +26,7 @@ public class MediaDetailsView {
         Button backButton = new Button("Tilbage");
         backButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
             try {
-                new MainView();
+                new HomeView();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -44,10 +44,16 @@ public class MediaDetailsView {
         VBox.setVgrow(expandRegion, Priority.ALWAYS);
 
         Text title = new Text(media.getTitle().toUpperCase());
+        title.setStyle("-fx-font-size: 25px");
         Text description = new Text(media.getDescription());
+        description.setStyle("-fx-font-style: italic");
         Text year = new Text("Årstal: " + media.getYear());
-        Text rating = new Text("Rating: " + media.getRating());
+        Text rating = new Text("Anmeldelser: " + media.getRating() + "% kunne lide denne " + (media.getType() == Media.Type.SERIES ? "serie" : "film"));
         Text genre = new Text("Genre: " + String.join(", ", Arrays.asList(media.getGenres())));
+
+        if (media.getType() == Media.Type.SERIES) {
+            // TODO: List out seasons
+        }
 
         description.wrappingWidthProperty().setValue(400);
 

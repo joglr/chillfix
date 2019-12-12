@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
 import models.*;
 import views.MediaCard;
@@ -14,13 +15,10 @@ import java.text.Collator;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class MainController implements Initializable {
+public class HomeViewController implements Initializable {
 
     @FXML
     FlowPane container;
-
-    @FXML
-    FlowPane genresContainer;
 
     @FXML
     TextField searchField;
@@ -29,6 +27,15 @@ public class MainController implements Initializable {
     private Filter typeFilter;
     private Filter genreFilter;
     private Filter searchFilter;
+
+    @FXML
+    ToggleButton showAllButton;
+    @FXML
+    ToggleButton showMoviesButton;
+    @FXML
+    ToggleButton showSeriesButton;
+    @FXML
+    ChoiceBox genreChoiceBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,28 +77,26 @@ public class MainController implements Initializable {
 //            genresContainer.getChildren().add(new ToggleButton(genre.substring(0, 1).toUpperCase() + genre.substring(1) + " [" + genreCount + "]"));
 //        }
 
-        ChoiceBox genreSelect = new ChoiceBox();
+
 
         // Sort genres alphabetically
         Collection<String> genres =
                 new TreeSet<>(Collator.getInstance());
-        genres.add("All");
+//        genres.add("All");
         genres.addAll(uniqueGenres);
 //        Stream.of(genres).map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).toArray(String[]::new)
 
 //        ArrayList<String> sortedGenres = java.util.Collections.sort(genres, Collator.getInstance());
 
-        genreSelect.getItems().addAll(genres);
-        genreSelect.setValue("All");
-        genreSelect.getStyleClass().add(("test"));
-        genreSelect.idProperty().set("test");
+        genreChoiceBox.getItems().addAll(genres);
+        resetGenreChoiceBox();
+//        genreChoiceBox.getStyleClass().add(("test"));
+//        genreChoiceBox.idProperty().set("test");
 //        genreSelect.setStyle("-fx-font-size:  30px");
 
 
         // Capitalize
         // String cap = str.substring(0, 1).toUpperCase() + str.substring(1);
-
-        genresContainer.getChildren().add(genreSelect);
     }
 
     private String[] parseGenres(String rowString) {
@@ -119,19 +124,32 @@ public class MainController implements Initializable {
     @FXML
     public void showAll() {
         typeFilter = null;
+        resetTypeButtons();
         displayMedia();
     }
 
     @FXML
     public void showMovies() {
         typeFilter = new TypeFilter(Media.Type.MOVIE);
+
+        deselectTypeButtons();
+        showMoviesButton.selectedProperty().set(true);
         displayMedia();
     }
 
     @FXML
     public void showSeries() {
         typeFilter = new TypeFilter(Media.Type.SERIES);
+        deselectTypeButtons();
+        showSeriesButton.selectedProperty().set(true);
         displayMedia();
+    }
+
+    public void deselectTypeButtons() {
+        ToggleButton[] toggleButtons = {showAllButton, showMoviesButton, showSeriesButton};
+        for (ToggleButton toggleButton : toggleButtons) {
+            toggleButton.selectedProperty().set(false);
+        }
     }
 
     @FXML
@@ -139,7 +157,18 @@ public class MainController implements Initializable {
         typeFilter = null;
         genreFilter = null;
         searchFilter = null;
+        resetTypeButtons();
+        resetGenreChoiceBox();
         displayMedia();
+    }
+
+    private void resetGenreChoiceBox() {
+        genreChoiceBox.setValue("all");
+    }
+
+    public void resetTypeButtons() {
+        deselectTypeButtons();
+        showAllButton.selectedProperty().set(true);
     }
 
     public void searchMedia() {

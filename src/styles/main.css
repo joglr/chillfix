@@ -1,13 +1,44 @@
-#card {
-    -fx-background-repeat: stretch;
-    -fx-background-size: 900 506;
-    -fx-background-position: center center;
-    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+.MediaCard {
+    -fx-padding: 8px;
 }
 
-.test {
+.MediaCardContainer {
+    /*-fx-background-repeat: stretch;*/
+    /*-fx-background-size: 900 506;*/
+    /*-fx-background-position: center center;*/
+    /*-fx-effect: dropshadow(three-pass-box, black, 3, 0.1, 0, 0);*/
+    -fx-padding: 8px;
+    /*-fx-background-radius: 16px;*/
+    -fx-border-radius: 8px;
+}
+
+.MediaCardImage {
+    -fx-spacing: 8px;
+
     -fx-border-color: red;
     -fx-border-width: 10px;
+    -fx-background-radius: 10px;
+}
+
+.MediaPlayButton {
+    -fx-font-size: 20px;
+    height: 20px;
+    width: 20px;
+    -fx-background-radius: 50%;
+}
+.MediaCardButton {
+    visibility: hidden;
+}
+
+.MediaCardContainer:hover .MediaCardButton {
+    display: block;
+    visibility: visible;
+}
+
+
+.MediaGenreChoicebox {
+    /*-fx-border-color: red;*/
+    /*-fx-border-width: 10px;*/
     -fx-text-fill: blue;
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;
