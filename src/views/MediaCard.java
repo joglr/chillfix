@@ -1,10 +1,10 @@
 package views;
 
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import models.Media;
 
@@ -22,36 +22,47 @@ public class MediaCard {
     }
 
     public Node render() {
-        VBox container = new VBox();
-        Tooltip.install(container, new Tooltip(media.getTitle()));
+        HBox root = new HBox();
+        root.getStyleClass().add("MediaCard");
+        BorderPane container = new BorderPane();
+        root.getChildren().add(container);
+
         Image poster = null;
         container.setPrefHeight(200);
         container.setPrefWidth(150);
 
-        try {
-            poster = new Image(media.getPosterFilePath());
-        } catch (RuntimeException e) {
-            System.out.println("*** IllegalArgumentException " + media.getPosterFilePath());
-        } finally {
-            ImageView imageView = new ImageView(poster);
-            imageView.setPreserveRatio(true);
-            imageView.setFitWidth(150);
+        BackgroundImage myBI = new BackgroundImage(new Image(media.getPosterFilePath()),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(10.0, 10.0, true, true, true, true));
+        container.setBackground(new Background(myBI));
+        container.getStyleClass().add("MediaCardContainer");
 
-            BackgroundImage myBI = new BackgroundImage(new Image(media.getPosterFilePath()),
-                    BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                    BackgroundSize.DEFAULT);
-            container.setBackground(new Background(myBI));
-            container.setId("#card");
-        }
+        Button playButton = new Button("▶");
+        playButton.getStyleClass().add("MediaPlayButton");
+        container.setCenter(playButton);
+
+        HBox actions = new HBox();
 
         if (isButtonVisible) {
-            Button myCoolButton = new Button("Gem");
+            Tooltip.install(container, new Tooltip(media.getTitle()));
+            Button detailsButton = new Button("Detaljer");
+            Button saveButton = new Button("⭐");
+            playButton.getStyleClass().add("MediaCardButton");
+            saveButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
+                // TODO: Save to my list
+            });
+            detailsButton.getStyleClass().add("MediaCardButton");
+            saveButton.getStyleClass().add("MediaCardButton");
+            detailsButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
+                new MediaDetailsView(media);
+            });
             Region expandRegion = new Region();
-            VBox.setVgrow(expandRegion, Priority.ALWAYS);
-            container.getChildren().add(expandRegion);
-
-            container.getChildren().add(myCoolButton);
+            HBox.setHgrow(expandRegion, Priority.ALWAYS);
+            actions.getChildren().addAll(detailsButton, expandRegion, saveButton);
         }
-        return container;
+
+        container.setBottom(actions);
+
+        return root;
     }
 }
