@@ -1,29 +1,36 @@
 package views;
 
-import javafx.scene.Node;
+import controllers.RootController;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import models.Media;
 
+import java.io.IOException;
 import java.util.Arrays;
 
-public class MediaDetails {
+public class MediaDetailsView {
     private final Media media;
 
-    public MediaDetails(Media media) {
+    public MediaDetailsView(Media media) {
         this.media = media;
-    }
+        BorderPane root = new BorderPane();
 
-    public Node render() {
-        HBox container = new HBox();
+        BorderPane container = new BorderPane();
+        root.setCenter(container);
         VBox left = new VBox();
         VBox right = new VBox();
-        HBox leftButtons = new HBox();
+        HBox leftBottomButtons = new HBox();
+        Button backButton = new Button("Tilbage");
+        backButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
+            try {
+                new MainView();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
         //Tooltip.install(container, new Tooltip(media.getTitle()));
         Image poster = null;
         //container.setPrefHeight();
@@ -44,21 +51,15 @@ public class MediaDetails {
 
         description.wrappingWidthProperty().setValue(400);
 
-        container.getChildren().add(left);
-        container.getChildren().add(right);
-        left.getChildren().add(title);
+        container.setTop(backButton);
+        container.setLeft(left);
+        container.setMaxWidth(600);
+        container.setRight(right);
         left.setSpacing(5);
-        left.getChildren().add(description);
-        left.getChildren().add(year);
-        left.getChildren().add(rating);
-        left.getChildren().add(genre);
-        left.getChildren().add(expandRegion);
-        left.getChildren().add(leftButtons);
-        leftButtons.getChildren().add(AddToMyListButton);
-        leftButtons.getChildren().add(DeleteFromMyListButton);
+        left.getChildren().addAll(title, description, year, rating, genre, expandRegion, leftBottomButtons);
+        leftBottomButtons.getChildren().addAll(AddToMyListButton, DeleteFromMyListButton);
         right.getChildren().add(mediaCard.render());
 
-
-        return container;
+        RootController.setCurrentRoot(root);
     }
 }

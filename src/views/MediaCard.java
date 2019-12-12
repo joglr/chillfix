@@ -1,5 +1,6 @@
 package views;
 
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -45,12 +46,16 @@ public class MediaCard {
         }
 
         if (isButtonVisible) {
-            Button myCoolButton = new Button("Gem");
+//            Button myCoolButton = new Button("Gem");
+            Button detailsButton = new Button("Detaljer");
+            detailsButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
+                new MediaDetailsView(media);
+            });
             Region expandRegion = new Region();
             VBox.setVgrow(expandRegion, Priority.ALWAYS);
             container.getChildren().add(expandRegion);
 
-            container.getChildren().add(myCoolButton);
+            container.getChildren().add(detailsButton);
         }
         return container;
     }

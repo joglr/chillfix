@@ -18,9 +18,7 @@ public class RootController {
         RootController.rootClass = rootClass;
         RootController.primaryStage = primaryStage;
 
-//        Parent root = loadRoot("../views/MainView.fxml");
         globalScene = new Scene(
-//                root
                 new AnchorPane()
                 , 1280 / 1.5, 720 / 1.5);
         primaryStage.setScene(globalScene);
