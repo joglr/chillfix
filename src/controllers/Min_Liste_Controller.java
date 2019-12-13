@@ -1,9 +1,9 @@
 package controllers;
 
 
+import javafx.fxml.FXML;
 import models.Media;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +16,15 @@ public class Min_Liste_Controller {
         my_list = new ArrayList<>();
     }
 
-    public void addMediaToList(Media media) {
-        ActionEvent myCoolButton;
+    @FXML
+// lav togglebutton for save og delete i master
+    public void saveButton(Media media) {
+//        ActionEvent saveButton;
         my_list.add(media);
 
     }
 
+    @FXML
     //    TODO remove media from list event handler
 //    Action listener/event handler, når knap: "Fjern fra min liste" trykkes:
     public void deleteMedia(Media media) {
@@ -31,8 +34,9 @@ public class Min_Liste_Controller {
         }
     }
 
-    public void show() {
+    public void showMyList() {
 //    new root to view my list
-        System.out.print(my_list);
+
+//     fra HomeViewController:   displayMedia();
     }
 }
