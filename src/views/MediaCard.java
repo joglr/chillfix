@@ -8,8 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import models.Media;
 
+
 public class MediaCard {
-    private final Media media;
+    private Media media;
     private boolean isButtonVisible = true;
 
     public MediaCard(Media media) {
@@ -46,19 +47,12 @@ public class MediaCard {
         if (isButtonVisible) {
             Tooltip.install(container, new Tooltip(media.getTitle()));
             Button detailsButton = new Button("Detaljer");
-            Button saveButton = new Button("⭐");
             playButton.getStyleClass().add("MediaCardButton");
-            saveButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
-                // TODO: Save to my list
-            });
             detailsButton.getStyleClass().add("MediaCardButton");
-            saveButton.getStyleClass().add("MediaCardButton");
-            detailsButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
-                new MediaDetailsView(media);
-            });
+            detailsButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> new MediaDetailsView(media));
             Region expandRegion = new Region();
             HBox.setHgrow(expandRegion, Priority.ALWAYS);
-            actions.getChildren().addAll(detailsButton, expandRegion, saveButton);
+            actions.getChildren().addAll(detailsButton, expandRegion);
         }
 
         container.setBottom(actions);
