@@ -109,7 +109,6 @@ public class HomeViewController implements Initializable {
     }
 
     private void displayMedia() {
-        System.out.println("Re-rendering");
         int renderCount = 0;
         container.getChildren().clear();
         for (Media media : mediaList) {
@@ -125,7 +124,7 @@ public class HomeViewController implements Initializable {
             renderCount++;
         }
         if (renderCount == 0) {
-            Text text = new Text("Intet at vise, prøv m. filtre");
+            Text text = new Text("Ingen resultater");
             container.getChildren().add(text);
 
         }
