@@ -1,6 +1,6 @@
 package models;
 
 public interface Filter {
-    Boolean matches(Media m);
+    boolean matches(Media m);
 }
 

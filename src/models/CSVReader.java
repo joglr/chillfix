@@ -10,11 +10,9 @@ import java.util.List;
 public class CSVReader {
     private List<String[]> dataList;
     private BufferedReader bufferedReader;
-    private String separator;
 
-    CSVReader(String path, String separator) {
+    public CSVReader(String path) {
 
-        this.separator = separator;
         dataList = new ArrayList<String[]>();
 
         try {
@@ -22,7 +20,7 @@ public class CSVReader {
             bufferedReader = new BufferedReader(new FileReader(path));
 
             while ((currentLine = bufferedReader.readLine()) != null) {
-                String[] entry = currentLine.split(separator);
+                String[] entry = currentLine.split(";");
                 dataList.add(entry);
             }
 
@@ -41,9 +39,6 @@ public class CSVReader {
             }
         }
 
-    }
-    public CSVReader(String path) {
-        this(path, ";");
     }
 
     public List<String[]> getDataList() { return dataList; }

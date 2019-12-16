@@ -1,5 +1,6 @@
 package views;
 
+import controllers.Min_Liste_Controller;
 import controllers.RootController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -7,15 +8,14 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import models.Media;
+import models.MyListFilter;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-public class MediaDetailsView {
-    private final Media media;
+class MediaDetailsView {
 
     public MediaDetailsView(Media media) {
-        this.media = media;
         BorderPane root = new BorderPane();
 
         BorderPane container = new BorderPane();
@@ -37,8 +37,29 @@ public class MediaDetailsView {
         container.setPrefWidth(600);
 
         MediaCard mediaCard = new MediaCard(media, false);
-        Button AddToMyListButton = new Button("Tilføj til min liste");
-        Button DeleteFromMyListButton = new Button("Fjern fra min liste");
+        System.out.println(Min_Liste_Controller.getMy_list()
+                .toString());
+        if (!new MyListFilter().matches(media)) {
+            Button DeleteFromMyListButton = new Button("Fjern fra min liste");
+            leftBottomButtons.getChildren().addAll(DeleteFromMyListButton);
+            DeleteFromMyListButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
+                Min_Liste_Controller.getMy_list().remove(media.getImdbID());
+
+                new MediaDetailsView(media);
+
+            });
+
+        } else {
+            Button AddToMyListButton = new Button("Tilføj til min liste");
+            AddToMyListButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
+                Min_Liste_Controller.getMy_list().add(media.getImdbID());
+
+                new MediaDetailsView(media);
+
+            });
+            leftBottomButtons.getChildren().addAll(AddToMyListButton);
+
+        }
         Region expandRegion = new Region();
 
         VBox.setVgrow(expandRegion, Priority.ALWAYS);
@@ -65,7 +86,6 @@ public class MediaDetailsView {
 
         left.setSpacing(5);
         left.getChildren().addAll(title, description, year, rating, genre, expandRegion, leftBottomButtons);
-        leftBottomButtons.getChildren().addAll(AddToMyListButton, DeleteFromMyListButton);
         right.getChildren().add(mediaCard.render());
 
         RootController.setCurrentRoot(root);

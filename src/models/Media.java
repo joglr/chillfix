@@ -1,16 +1,16 @@
 package models;
 
 public abstract class Media {
-    private String imdbID;
-    private String title;
-    private String description;
-    private int year;
-    private int rating;
-    private String[] genres;
-    private String posterFilePath;
+    private final String imdbID;
+    private final String title;
+    private final String description;
+    private final int year;
+    private final int rating;
+    private final String[] genres;
+    private final String posterFilePath;
     public enum Type { SERIES, MOVIE }
 
-    public Media(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath) {
+    Media(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath) {
         this.imdbID = imdbID;
         this.title = title;
         this.description = description;

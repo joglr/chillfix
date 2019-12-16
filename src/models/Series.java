@@ -1,7 +1,7 @@
 package models;
 
 public class Series extends Media  {
-    private Integer[] seasons;
+    private final Integer[] seasons;
 
     public Series(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath, Integer[] seasons) {
         super(imdbID, title, description, rating, year, genres, posterFilePath);

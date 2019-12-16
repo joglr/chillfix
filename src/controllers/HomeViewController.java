@@ -4,10 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.text.Text;
 import models.*;
 import views.MediaCard;
 
@@ -24,11 +26,13 @@ public class HomeViewController implements Initializable {
     @FXML
     TextField searchField;
 
-    private List<Media> mediaList = new ArrayList<>();
+    private final List<Media> mediaList = new ArrayList<>();
     private Filter typeFilter;
     private Filter genreFilter;
     private Filter searchFilter;
-
+    @FXML
+    Button showMyList;
+    private Filter myListFilter;
     @FXML
     ToggleButton showAllButton;
     @FXML
@@ -110,14 +114,20 @@ public class HomeViewController implements Initializable {
         container.getChildren().clear();
         for (Media media : mediaList) {
             if (renderCount > 50) break;
-            if ((typeFilter != null && !typeFilter.matches(media)) ||
-                    (genreFilter != null && !genreFilter.matches(media)) ||
-                    (searchFilter != null && !searchFilter.matches(media))) continue;
+            if ((typeFilter != null && typeFilter.matches(media)) ||
+                    (genreFilter != null && genreFilter.matches(media)) ||
+                    (searchFilter != null && searchFilter.matches(media)) ||
+                    (myListFilter != null && myListFilter.matches(media))) continue;
 
             MediaCard mediaCard = new MediaCard(media);
             Node node = mediaCard.render();
             container.getChildren().add(node);
             renderCount++;
+        }
+        if (renderCount == 0) {
+            Text text = new Text("Intet at vise, prøv m. filtre");
+            container.getChildren().add(text);
+
         }
         System.out.println("Rendered " + renderCount + " elements");
     }
@@ -146,7 +156,7 @@ public class HomeViewController implements Initializable {
         displayMedia();
     }
 
-    public void deselectTypeButtons() {
+    private void deselectTypeButtons() {
         ToggleButton[] toggleButtons = {showAllButton, showMoviesButton, showSeriesButton};
         for (ToggleButton toggleButton : toggleButtons) {
             toggleButton.selectedProperty().set(false);
@@ -154,25 +164,30 @@ public class HomeViewController implements Initializable {
     }
 
     @FXML
-    public void resetFilters() {
+    private void resetFilters() {
         typeFilter = null;
         genreFilter = null;
         searchFilter = null;
+        myListFilter = null;
         resetTypeButtons();
         resetGenreChoiceBox();
         displayMedia();
+        showMyList.setText("Min Liste");
+
+        showMyList.setOnAction((ActionEvent e) -> showMyList());
     }
 
     private void resetGenreChoiceBox() {
         genreChoiceBox.setValue("all");
     }
 
-    public void resetTypeButtons() {
+    private void resetTypeButtons() {
         deselectTypeButtons();
         showAllButton.selectedProperty().set(true);
     }
 
-    public void searchMedia() {
+    @FXML
+    private void searchMedia() {
         String searchString = searchField.getText();
         searchFilter = searchString.length() == 0 ? null : new SearchFilter(searchString);
         displayMedia();
@@ -182,9 +197,18 @@ public class HomeViewController implements Initializable {
         if (searchField.getText().length() == 0) searchMedia();
     }
 
-    public void filterByGenre(ActionEvent actionEvent) {
+    public void filterByGenre() {
         String value = genreChoiceBox.getValue().toString();
-        genreFilter = value == "all" ? null : new GenreFilter(value);
+        genreFilter = value.equals("all") ? null : new GenreFilter(value);
         displayMedia();
+    }
+
+    @FXML
+    private void showMyList() {
+        myListFilter = new MyListFilter();
+        showMyList.setText("Tilbage");
+        showMyList.setOnAction((ActionEvent e) -> resetFilters());
+        displayMedia();
+        System.out.println(Min_Liste_Controller.getMy_list());
     }
 }

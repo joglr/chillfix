@@ -10,11 +10,11 @@ import java.io.IOException;
 
 public class RootController {
     //    static Scene currentScene;
-    static Stage primaryStage;
-    static Scene globalScene;
-    static Class rootClass;
+    private static Stage primaryStage;
+    private static Scene globalScene;
+    private static Class rootClass;
 
-    public static void init(Stage primaryStage, Class rootClass) throws IOException {
+    public static void init(Stage primaryStage, Class rootClass) {
         RootController.rootClass = rootClass;
         RootController.primaryStage = primaryStage;
 
