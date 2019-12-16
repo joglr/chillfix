@@ -1,7 +1,5 @@
 package models;
 
-import views.MediaCard;
-
 public abstract class Media {
     private String imdbID;
     private String title;
@@ -36,11 +34,11 @@ public abstract class Media {
         return title;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    int getYear() {
+    public int getYear() {
         return year;
     }
 
