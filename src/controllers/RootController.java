@@ -17,6 +17,7 @@ public class RootController {
     public static void init(Stage primaryStage, Class rootClass) {
         RootController.rootClass = rootClass;
         RootController.primaryStage = primaryStage;
+        primaryStage.setTitle("Chillfix");
 
         globalScene = new Scene(
                 new AnchorPane()
