@@ -26,6 +26,8 @@ class MediaDetailsView {
         VBox left = new VBox();
         VBox right = new VBox();
         HBox leftBottomButtons = new HBox();
+
+        //Knap 'Tilbage' og eventhandler til knappen, igennem en lambda expression
         Button backButton = new Button("Tilbage");
         backButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
             try {
@@ -42,6 +44,8 @@ class MediaDetailsView {
         MediaCard mediaCard = new MediaCard(media, false);
         System.out.println(MyListController.getMyList()
                 .toString());
+
+        //Hvis media findes på 'MyList', så dannes en knap 'Fjern fra min liste' med en eventhandler, der fjerner mediet fra listen
         if (new MyListFilter().matches(media)) {
             Button DeleteFromMyListButton = new Button("Fjern fra min liste");
             leftBottomButtons.getChildren().addAll(DeleteFromMyListButton);
@@ -53,6 +57,7 @@ class MediaDetailsView {
             });
 
         } else {
+            //Hvis media ikke er en del af MyList, så er der mulighed for at tilføje til listen
             Button AddToMyListButton = new Button("Tilføj til min liste");
             AddToMyListButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
                 MyListController.getMyList().add(media.getImdbID());
