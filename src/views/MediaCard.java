@@ -6,10 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import models.Renderable;
 import models.Media;
 
 
-public class MediaCard {
+public class MediaCard implements Renderable {
     private Media media;
     private boolean isButtonVisible = true;
 
