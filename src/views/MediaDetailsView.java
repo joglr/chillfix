@@ -1,6 +1,6 @@
 package views;
 
-import controllers.Min_Liste_Controller;
+import controllers.MyListController;
 import controllers.RootController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -40,13 +40,13 @@ class MediaDetailsView {
         container.setPrefWidth(600);
 
         MediaCard mediaCard = new MediaCard(media, false);
-        System.out.println(Min_Liste_Controller.getMy_list()
+        System.out.println(MyListController.getMyList()
                 .toString());
         if (new MyListFilter().matches(media)) {
             Button DeleteFromMyListButton = new Button("Fjern fra min liste");
             leftBottomButtons.getChildren().addAll(DeleteFromMyListButton);
             DeleteFromMyListButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
-                Min_Liste_Controller.getMy_list().remove(media.getImdbID());
+                MyListController.getMyList().remove(media.getImdbID());
 
                 new MediaDetailsView(media);
 
@@ -55,7 +55,7 @@ class MediaDetailsView {
         } else {
             Button AddToMyListButton = new Button("Tilføj til min liste");
             AddToMyListButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {
-                Min_Liste_Controller.getMy_list().add(media.getImdbID());
+                MyListController.getMyList().add(media.getImdbID());
                 new MediaDetailsView(media);
 
             });

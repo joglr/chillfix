@@ -204,6 +204,6 @@ public class HomeViewController implements Initializable {
         showMyList.setText("Tilbage");
         showMyList.setOnAction((ActionEvent e) -> resetFilters());
         displayMedia();
-        System.out.println(Min_Liste_Controller.getMy_list());
+        System.out.println(MyListController.getMyList());
     }
 }
