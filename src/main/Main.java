@@ -5,11 +5,13 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import views.HomeView;
 
+import java.io.IOException;
+
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws IOException {
         RootController.init(primaryStage, getClass());
         new HomeView();
     }

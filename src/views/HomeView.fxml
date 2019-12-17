@@ -28,14 +28,16 @@
                 </Label>
             </HBox>
             <HBox alignment="TOP_CENTER" spacing="8.0">
+                <children>
+                    <Button fx:id="showMyList" mnemonicParsing="false" onAction="#showMyList" text="Min liste">
+                        <padding>
+                            <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
+                        </padding>
+                    </Button>
+                </children>
                 <padding>
                     <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
                 </padding>
-                <Button fx:id="showMyList" mnemonicParsing="false" onAction="#showMyList" text="Min liste">
-                    <padding>
-                        <Insets bottom="8.0" left="16.0" right="16.0" top="8.0"/>
-                    </padding>
-                </Button>
             </HBox>
             <HBox alignment="BOTTOM_CENTER" spacing="8.0">
                 <padding>

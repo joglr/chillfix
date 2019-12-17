@@ -40,6 +40,7 @@ public class HomeViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         CSVReader movieData = new CSVReader("data/db/movies.csv");
         CSVReader seriesData = new CSVReader("data/db/series.csv");
 
@@ -49,6 +50,8 @@ public class HomeViewController implements Initializable {
         HashSet<String> uniqueGenres = new HashSet<>();
         uniqueGenres.add("all");
 
+
+//TODO: checked exceptions, om rows er tilpas længde.
         for (String[] row : movieRows) {
             String[] genres = parseGenres(row[5]);
             Media movie = new Movie(
@@ -58,6 +61,7 @@ public class HomeViewController implements Initializable {
                     row[6]);
             mediaList.add(movie);
             uniqueGenres.addAll(Arrays.asList(genres));
+
         }
 
         for (String[] row : seriesRows) {
