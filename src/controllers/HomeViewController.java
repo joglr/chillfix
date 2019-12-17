@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 public class HomeViewController implements Initializable {
 
     @FXML
-    FlowPane container;
+    FlowPane mediaContainer;
 
     @FXML
     TextField searchField;
@@ -50,8 +50,7 @@ public class HomeViewController implements Initializable {
         HashSet<String> uniqueGenres = new HashSet<>();
         uniqueGenres.add("all");
 
-
-//TODO: checked exceptions, om rows er tilpas længde.
+        // TODO: checked exceptions, om rows er tilpas længde.
         for (String[] row : movieRows) {
             String[] genres = parseGenres(row[5]);
             Media movie = new Movie(
@@ -61,7 +60,6 @@ public class HomeViewController implements Initializable {
                     row[6]);
             mediaList.add(movie);
             uniqueGenres.addAll(Arrays.asList(genres));
-
         }
 
         for (String[] row : seriesRows) {
@@ -73,44 +71,25 @@ public class HomeViewController implements Initializable {
             mediaList.add(series);
             uniqueGenres.addAll(Arrays.asList(genres));
         }
-        displayMedia();
-//        for (String genre : uniqueGenres) {
-//            int genreCount = 0;
-//            for (Media m : mediaList) {
-//                if (Arrays.asList(m.getGenres()).contains(genre)) genreCount++;
-//            }
-//            genresContainer.getChildren().add(new ToggleButton(genre.substring(0, 1).toUpperCase() + genre.substring(1) + " [" + genreCount + "]"));
-//        }
-
-
 
         // Sort genres alphabetically
-        Collection<String> genres =
-                new TreeSet<>(Collator.getInstance());
-//        genres.add("All");
+        Collection<String> genres = new TreeSet<>(Collator.getInstance());
         genres.addAll(uniqueGenres);
-//        Stream.of(genres).map(str -> str.substring(0, 1).toUpperCase() + str.substring(1)).toArray(String[]::new)
-
-//        ArrayList<String> sortedGenres = java.util.Collections.sort(genres, Collator.getInstance());
-
         genreChoiceBox.getItems().addAll(genres);
         resetGenreChoiceBox();
-//        genreChoiceBox.getStyleClass().add(("test"));
-//        genreChoiceBox.idProperty().set("test");
-//        genreSelect.setStyle("-fx-font-size:  30px");
-
-
-        // Capitalize
-        // String cap = str.substring(0, 1).toUpperCase() + str.substring(1);
+        displayMedia();
     }
 
     private String[] parseGenres(String rowString) {
         return rowString.substring(1, rowString.length() - 1).split(",");
     }
 
+    /**
+     * (Re)renders filtered media items from mediaList into mediaContainer
+     */
     private void displayMedia() {
         int renderCount = 0;
-        container.getChildren().clear();
+        mediaContainer.getChildren().clear();
         for (Media media : mediaList) {
             if (renderCount > 50) break;
             if ((typeFilter != null && !typeFilter.matches(media)) ||
@@ -120,26 +99,35 @@ public class HomeViewController implements Initializable {
 
             MediaCard mediaCard = new MediaCard(media);
             Node node = mediaCard.render();
-            container.getChildren().add(node);
+            mediaContainer.getChildren().add(node);
             renderCount++;
         }
         if (renderCount == 0) {
             Label text = new Label("Ingen resultater");
             text.getStyleClass().add("darkText");
-            container.getChildren().add(text);
+            mediaContainer.getChildren().add(text);
         }
         System.out.println("Rendered " + renderCount + " elements");
     }
 
+    /**
+     * The following three methods follows the following specification
+     * void showType<type>()
+     * The methods
+     * 1) updates the typeFiler to the appropriate filter
+     * 2) unselects all typeButtons
+     * 3) selects the selected typeButton
+     * 4) calls `displayMedia()` to rerender mediaContainer with the active filters
+     */
     @FXML
-    public void showAll() {
+    public void showTypeAll() {
         typeFilter = null;
         resetTypeButtons();
         displayMedia();
     }
 
     @FXML
-    public void showMovies() {
+    public void showTypeMovies() {
         typeFilter = new TypeFilter(Media.Type.MOVIE);
 
         deselectTypeButtons();
@@ -148,13 +136,16 @@ public class HomeViewController implements Initializable {
     }
 
     @FXML
-    public void showSeries() {
+    public void showTypeSeries() {
         typeFilter = new TypeFilter(Media.Type.SERIES);
         deselectTypeButtons();
         showSeriesButton.selectedProperty().set(true);
         displayMedia();
     }
 
+    /**
+     * Deselects typeButtons
+     */
     private void deselectTypeButtons() {
         ToggleButton[] toggleButtons = {showAllButton, showMoviesButton, showSeriesButton};
         for (ToggleButton toggleButton : toggleButtons) {
@@ -162,6 +153,9 @@ public class HomeViewController implements Initializable {
         }
     }
 
+    /**
+     * Resets all filters and buttons, then calls displayMedia()
+     */
     @FXML
     private void resetFilters() {
         typeFilter = null;
@@ -170,10 +164,9 @@ public class HomeViewController implements Initializable {
         myListFilter = null;
         resetTypeButtons();
         resetGenreChoiceBox();
-        displayMedia();
         showMyList.setText("Min Liste");
-
         showMyList.setOnAction((ActionEvent e) -> showMyList());
+        displayMedia();
     }
 
     private void resetGenreChoiceBox() {
@@ -185,18 +178,21 @@ public class HomeViewController implements Initializable {
         showAllButton.selectedProperty().set(true);
     }
 
+    /* onAction handlers */
+
     @FXML
-    private void searchMedia() {
+    private void searchFieldSubmitHandler() {
         String searchString = searchField.getText();
         searchFilter = searchString.length() == 0 ? null : new SearchFilter(searchString);
         displayMedia();
     }
 
-    public void searchType() {
-        if (searchField.getText().length() == 0) searchMedia();
+    @FXML
+    public void searchFieldKeyTypedHandler() {
+        if (searchField.getText().length() == 0) searchFieldSubmitHandler();
     }
 
-    public void filterByGenre() {
+    public void genreChoiceBoxActionHandler() {
         String value = genreChoiceBox.getValue().toString();
         genreFilter = value.equals("all") ? null : new GenreFilter(value);
         displayMedia();
