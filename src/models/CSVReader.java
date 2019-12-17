@@ -17,9 +17,14 @@ public class CSVReader {
 
         try {
             String currentLine;
+            //BufferedReader anvendes til at indlæse en enkelt linje ad gangen, istedet for hele filen
+            //bufferedReader bliver oprettet og sat til path af typen FileReader
             bufferedReader = new BufferedReader(new FileReader(path));
 
+            //while-løkke der kører indtil currentline er null.
             while ((currentLine = bufferedReader.readLine()) != null) {
+                //Skaber et String array (entry), der opdeles af karakteren ";",
+                // hvilket så er den udleverede dataliste med film og serier, som bliver opdelt i hhv. årstal, genre osv.
                 String[] entry = currentLine.split(";");
                 dataList.add(entry);
             }

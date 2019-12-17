@@ -12,6 +12,7 @@ public class GenreFilter implements Filter {
 
     @Override
     public boolean matches(Media m) {
+        //returnerer true hvis m indeholder den genre (defineret som felt) ud af flere mulighede genre (getGenres()).
         return Arrays.asList(m.getGenres()).contains(genre);
     }
 }

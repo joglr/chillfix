@@ -9,6 +9,7 @@ public class Movie extends Media {
 
     @Override
     public Type getType() {
+        //typen er et enum fra superklassen Media, hvor der er MOVIE og SERIES
         return Media.Type.MOVIE;
     }
 

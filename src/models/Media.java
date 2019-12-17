@@ -1,5 +1,7 @@
 package models;
 
+//imbdId, title, description, year, rating, genres, posterFilePath, Type er alle typer fra datafilmen som blev uddelt
+
 public abstract class Media {
     private final String imdbID;
     private final String title;
