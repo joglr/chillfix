@@ -4,12 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.text.Text;
 import models.*;
 import views.MediaCard;
 
@@ -124,7 +120,8 @@ public class HomeViewController implements Initializable {
             renderCount++;
         }
         if (renderCount == 0) {
-            Text text = new Text("Ingen resultater");
+            Label text = new Label("Ingen resultater");
+            text.getStyleClass().add("dark");
             container.getChildren().add(text);
 
         }

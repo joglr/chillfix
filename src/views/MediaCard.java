@@ -28,7 +28,6 @@ public class MediaCard {
         BorderPane container = new BorderPane();
         root.getChildren().add(container);
 
-        Image poster = null;
         container.setPrefHeight(200);
         container.setPrefWidth(150);
 
