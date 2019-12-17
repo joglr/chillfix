@@ -121,9 +121,8 @@ public class HomeViewController implements Initializable {
         }
         if (renderCount == 0) {
             Label text = new Label("Ingen resultater");
-            text.getStyleClass().add("dark");
+            text.getStyleClass().add("darkText");
             container.getChildren().add(text);
-
         }
         System.out.println("Rendered " + renderCount + " elements");
     }
