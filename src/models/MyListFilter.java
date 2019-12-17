@@ -13,7 +13,7 @@ public class MyListFilter implements Filter {
             }
 
         }
-        return !foundMatch;
+        return foundMatch;
     }
 
 }

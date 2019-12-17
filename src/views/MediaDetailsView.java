@@ -42,7 +42,7 @@ class MediaDetailsView {
         MediaCard mediaCard = new MediaCard(media, false);
         System.out.println(Min_Liste_Controller.getMy_list()
                 .toString());
-        if (!new MyListFilter().matches(media)) {
+        if (new MyListFilter().matches(media)) {
             Button DeleteFromMyListButton = new Button("Fjern fra min liste");
             leftBottomButtons.getChildren().addAll(DeleteFromMyListButton);
             DeleteFromMyListButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> {

@@ -9,8 +9,8 @@ public class SearchFilter implements Filter {
 
     @Override
     public boolean matches(Media m) {
-        return !m.getTitle().toLowerCase().contains((searchString)) &&
-                !m.getDescription().toLowerCase().contains((searchString)) &&
-                !Integer.toString(m.getYear()).toLowerCase().contains((searchString));
+        return m.getTitle().toLowerCase().contains((searchString)) ||
+                m.getDescription().toLowerCase().contains((searchString)) ||
+                Integer.toString(m.getYear()).toLowerCase().contains((searchString));
     }
 }

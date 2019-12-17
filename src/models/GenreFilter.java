@@ -12,6 +12,6 @@ public class GenreFilter implements Filter {
 
     @Override
     public boolean matches(Media m) {
-        return !Arrays.asList(m.getGenres()).contains(genre);
+        return Arrays.asList(m.getGenres()).contains(genre);
     }
 }

@@ -13,6 +13,6 @@ public class TypeFilter implements Filter {
 
     @Override
     public boolean matches(Media m) {
-        return m.getType() != type;
+        return m.getType() == type;
     }
 }

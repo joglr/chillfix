@@ -113,10 +113,10 @@ public class HomeViewController implements Initializable {
         container.getChildren().clear();
         for (Media media : mediaList) {
             if (renderCount > 50) break;
-            if ((typeFilter != null && typeFilter.matches(media)) ||
-                    (genreFilter != null && genreFilter.matches(media)) ||
-                    (searchFilter != null && searchFilter.matches(media)) ||
-                    (myListFilter != null && myListFilter.matches(media))) continue;
+            if ((typeFilter != null && !typeFilter.matches(media)) ||
+                    (genreFilter != null && !genreFilter.matches(media)) ||
+                    (searchFilter != null && !searchFilter.matches(media)) ||
+                    (myListFilter != null && !myListFilter.matches(media))) continue;
 
             MediaCard mediaCard = new MediaCard(media);
             Node node = mediaCard.render();
