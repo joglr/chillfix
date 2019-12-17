@@ -40,7 +40,6 @@ public class HomeViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         CSVReader movieData = new CSVReader("data/db/movies.csv");
         CSVReader seriesData = new CSVReader("data/db/series.csv");
 

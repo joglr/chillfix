@@ -1,9 +1,11 @@
 package models;
 
+import controllers.RootController;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +15,13 @@ public class CSVReader {
 
     public CSVReader(String path) {
 
-        dataList = new ArrayList<String[]>();
+        dataList = new ArrayList<>();
 
         try {
             String currentLine;
             //BufferedReader anvendes til at indlæse en enkelt linje ad gangen, istedet for hele filen
             //bufferedReader bliver oprettet og sat til path af typen FileReader
-            bufferedReader = new BufferedReader(new FileReader(path));
+            bufferedReader = new BufferedReader(new InputStreamReader(RootController.rootClass.getClassLoader().getResourceAsStream(path)));
 
             //while-løkke der kører indtil currentline er null.
             while ((currentLine = bufferedReader.readLine()) != null) {

@@ -12,7 +12,7 @@ public class RootController {
     //    static Scene currentScene;
     private static Stage primaryStage;
     private static Scene globalScene;
-    private static Class rootClass;
+    public static Class rootClass;
 
     public static void init(Stage primaryStage, Class rootClass) {
         //Anvender Singleton pattern
