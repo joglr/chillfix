@@ -1,6 +1,6 @@
-package models;
+package main.java.src.models;
 
-import controllers.RootController;
+import main.java.src.controllers.RootController;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

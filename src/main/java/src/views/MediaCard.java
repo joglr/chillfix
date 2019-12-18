@@ -1,4 +1,4 @@
-package views;
+package main.java.src.views;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import models.Renderable;
-import models.Media;
+import main.java.src.models.Media;
+import main.java.src.models.Renderable;
 
 
 public class MediaCard implements Renderable {

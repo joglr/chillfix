@@ -1,4 +1,4 @@
-package models;
+package main.java.src.models;
 
 //imbdId, title, description, year, rating, genres, posterFilePath, Type er alle typer fra datafilmen som blev uddelt
 

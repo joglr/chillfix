@@ -1,6 +1,6 @@
-package models;
+package main.java.src.models;
 
-import controllers.MyListController;
+import main.java.src.controllers.MyListController;
 
 public class MyListFilter implements Filter {
     @Override

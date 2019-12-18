@@ -1,4 +1,4 @@
-package controllers;
+package main.java.src.controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +25,7 @@ public class RootController {
                 , 1280 / 1.5, 720 / 1.5);
         primaryStage.setScene(globalScene);
         //indlæsning af css fil
-        globalScene.getStylesheets().add(rootClass.getResource("../styles/main.css").toExternalForm());
+        globalScene.getStylesheets().add(rootClass.getClassLoader().getResource("/styles/main.css").toExternalForm());
         primaryStage.show();
     }
 
@@ -41,7 +41,7 @@ public class RootController {
     }
 
     public static Parent loadRoot(String path) throws IOException {
-        return FXMLLoader.load(rootClass.getResource(path));
+        return FXMLLoader.load(rootClass.getClassLoader().getResource(path));
     }
 
 }

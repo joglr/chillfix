@@ -1,4 +1,4 @@
-package models;
+package main.java.src.models;
 
 public class SearchFilter implements Filter {
     private final String searchString;

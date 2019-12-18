@@ -1,4 +1,4 @@
-package models;
+package main.java.src.models;
 
 import javafx.scene.Node;
 

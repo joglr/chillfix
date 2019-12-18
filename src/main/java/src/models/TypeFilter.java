@@ -1,4 +1,4 @@
-package models;
+package main.java.src.models;
 
 public class TypeFilter implements Filter {
     private final Media.Type type;

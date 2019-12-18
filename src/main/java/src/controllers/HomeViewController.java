@@ -1,4 +1,4 @@
-package controllers;
+package main.java.src.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,8 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
-import models.*;
-import views.MediaCard;
+import main.java.src.models.*;
+import main.java.src.views.MediaCard;
 
 import java.net.URL;
 import java.text.Collator;

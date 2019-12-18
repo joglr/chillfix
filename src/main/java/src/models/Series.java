@@ -1,4 +1,4 @@
-package models;
+package main.java.src.models;
 
 public class Series extends Media  {
     private final Integer[] seasons;
@@ -19,6 +19,6 @@ public class Series extends Media  {
 
     @Override
     public String getPosterFilePath() {
-        return "file:src/data/img/series_posters/" + super.getPosterFileName();
+        return "data/img/series_posters/" + super.getPosterFileName();
     }
 }

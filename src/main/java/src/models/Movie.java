@@ -1,4 +1,4 @@
-package models;
+package main.java.src.models;
 
 
 public class Movie extends Media {
@@ -15,6 +15,6 @@ public class Movie extends Media {
 
     @Override
     public String getPosterFilePath() {
-        return "file:src/data/img/movie_posters/" + super.getPosterFileName();
+        return "data/img/movie_posters/" + super.getPosterFileName();
     }
 }

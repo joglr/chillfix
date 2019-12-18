@@ -39,3 +39,13 @@ Mac:
 1. Kør projektet i `IntelliJ` ved at trykke på den grønne trekant `▶` knap
 1. Applikationen skulle gerne åbne i et nyt vindue
 
+## Jar oprettelse
+For at oprette en jar fil, kræver det at Maven er installeret.
+Derefter kan følge kommando køres, for at oprette en jar.
+```$xslt
+mvn compile && mvn package
+```
+Derefter kan jar filen køres med
+```
+java -jar target/chillfix-1.0-SNAPSHOT.jar
+```

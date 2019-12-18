@@ -1,9 +1,9 @@
-package main;
+package main.java.src;
 
-import controllers.RootController;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import views.HomeView;
+import main.java.src.controllers.RootController;
+import main.java.src.views.HomeView;
 
 import java.io.IOException;
 
