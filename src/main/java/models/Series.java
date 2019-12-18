@@ -1,6 +1,6 @@
-package main.java.src.models;
+package models;
 
-public class Series extends Media  {
+public class Series extends Media {
     private final Integer[] seasons;
 
     public Series(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath, Integer[] seasons) {
@@ -19,6 +19,6 @@ public class Series extends Media  {
 
     @Override
     public String getPosterFilePath() {
-        return "data/img/series_posters/" + super.getPosterFileName();
+        return "data/img/series_thumbs/" + super.getPosterFileName();
     }
 }

@@ -1,4 +1,4 @@
-package main.java.src.controllers;
+package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,8 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
-import main.java.src.models.*;
-import main.java.src.views.MediaCard;
+import models.*;
+import views.MediaCard;
 
 import java.net.URL;
 import java.text.Collator;
@@ -16,19 +16,13 @@ import java.util.stream.Stream;
 
 public class HomeViewController implements Initializable {
 
+    private final List<Media> mediaList = new ArrayList<>();
     @FXML
     FlowPane mediaContainer;
-
     @FXML
     TextField searchField;
-
-    private final List<Media> mediaList = new ArrayList<>();
-    private Filter typeFilter;
-    private Filter genreFilter;
-    private Filter searchFilter;
     @FXML
     Button showMyList;
-    private Filter myListFilter;
     @FXML
     ToggleButton showAllButton;
     @FXML
@@ -37,6 +31,10 @@ public class HomeViewController implements Initializable {
     ToggleButton showSeriesButton;
     @FXML
     ChoiceBox genreChoiceBox;
+    private Filter typeFilter;
+    private Filter genreFilter;
+    private Filter searchFilter;
+    private Filter myListFilter;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

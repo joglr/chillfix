@@ -1,6 +1,6 @@
-package main.java.src.models;
+package models;
 
-import main.java.src.controllers.RootController;
+import controllers.RootController;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -48,5 +48,7 @@ public class CSVReader {
 
     }
 
-    public List<String[]> getDataList() { return dataList; }
+    public List<String[]> getDataList() {
+        return dataList;
+    }
 }

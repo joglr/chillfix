@@ -34,6 +34,7 @@
     width: 20px;
     -fx-background-radius: 50%;
 }
+
 .MediaCardButton {
     visibility: hidden;
 }

@@ -1,4 +1,4 @@
-package main.java.src.models;
+package models;
 
 public interface Filter {
     boolean matches(Media m);

@@ -1,15 +1,15 @@
-package main.java.src.views;
+package views;
 
+import controllers.MyListController;
+import controllers.RootController;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import main.java.src.controllers.MyListController;
-import main.java.src.controllers.RootController;
-import main.java.src.models.Media;
-import main.java.src.models.MyListFilter;
-import main.java.src.models.Series;
+import models.Media;
+import models.MyListFilter;
+import models.Series;
 
 import java.io.IOException;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package main.java.src.models;
+package models;
 
 import java.util.Arrays;
 

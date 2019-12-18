@@ -1,4 +1,4 @@
-package main.java.src.models;
+package models;
 
 //imbdId, title, description, year, rating, genres, posterFilePath, Type er alle typer fra datafilmen som blev uddelt
 
@@ -10,7 +10,6 @@ public abstract class Media {
     private final int rating;
     private final String[] genres;
     private final String posterFilePath;
-    public enum Type { SERIES, MOVIE }
 
     Media(String imdbID, String title, String description, int rating, int year, String[] genres, String posterFilePath) {
         this.imdbID = imdbID;
@@ -53,4 +52,6 @@ public abstract class Media {
     }
 
     public abstract String getPosterFilePath();
+
+    public enum Type {SERIES, MOVIE}
 }

@@ -1,18 +1,21 @@
-package main.java.src.controllers;
+package controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import models.NoSuchFileException;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 public class RootController {
+    public static Class rootClass;
     //    static Scene currentScene;
     private static Stage primaryStage;
     private static Scene globalScene;
-    public static Class rootClass;
 
     public static void init(Stage primaryStage, Class rootClass) {
         //Anvender Singleton pattern
@@ -25,7 +28,7 @@ public class RootController {
                 , 1280 / 1.5, 720 / 1.5);
         primaryStage.setScene(globalScene);
         //indlæsning af css fil
-        globalScene.getStylesheets().add(rootClass.getClassLoader().getResource("/styles/main.css").toExternalForm());
+        globalScene.getStylesheets().add(rootClass.getClassLoader().getResource("styles/main.css").toExternalForm());
         primaryStage.show();
     }
 
@@ -41,7 +44,17 @@ public class RootController {
     }
 
     public static Parent loadRoot(String path) throws IOException {
-        return FXMLLoader.load(rootClass.getClassLoader().getResource(path));
+        return FXMLLoader.load(RootController.getURL(path));
+    }
+
+    public static URL getURL(String path) {
+        return Thread.currentThread().getContextClassLoader().getResource(path);
+    }
+
+    public static InputStream getURLAsStream(String path) throws NoSuchFileException {
+        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
+        if (inputStream == null) throw new NoSuchFileException(path);
+        return inputStream;
     }
 
 }

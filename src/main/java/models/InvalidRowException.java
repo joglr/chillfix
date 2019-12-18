@@ -1,4 +1,4 @@
-package main.java.src.models;
+package models;
 
 public class InvalidRowException extends Exception {
     protected String[] row;
