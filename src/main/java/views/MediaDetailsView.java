@@ -42,8 +42,6 @@ class MediaDetailsView {
         container.setPrefWidth(600);
 
         MediaCard mediaCard = new MediaCard(media, false);
-        System.out.println(MyListController.getMyList()
-                .toString());
 
         //Hvis media findes på 'MyList', så dannes en knap 'Fjern fra min liste' med en eventhandler, der fjerner mediet fra listen
         if (new MyListFilter().matches(media)) {

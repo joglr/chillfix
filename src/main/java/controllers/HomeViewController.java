@@ -104,7 +104,6 @@ public class HomeViewController implements Initializable {
             text.getStyleClass().add("darkText");
             mediaContainer.getChildren().add(text);
         }
-        System.out.println("Rendered " + renderCount + " elements");
     }
 
     /**
@@ -201,6 +200,5 @@ public class HomeViewController implements Initializable {
         showMyList.setText("Tilbage");
         showMyList.setOnAction((ActionEvent e) -> resetFilters());
         displayMedia();
-        System.out.println(MyListController.getMyList());
     }
 }
