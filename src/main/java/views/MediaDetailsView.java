@@ -82,6 +82,9 @@ class MediaDetailsView {
 
         Text title = new Text(media.getTitle().toUpperCase());
         title.setStyle("-fx-font-size: 25px");
+        title.getStyleClass().add("darkText");
+        title.wrappingWidthProperty().setValue(400);
+
         Text description = new Text(media.getDescription());
         description.getStyleClass().add("darkText");
         description.setStyle("-fx-font-style: italic");
@@ -89,8 +92,10 @@ class MediaDetailsView {
 
         Text year = new Text("Årstal: " + media.getYear());
         year.getStyleClass().add("darkText");
+
         Text rating = new Text("Anmeldelser: " + media.getRating() + "% kunne lide denne " + (media.getType() == Media.Type.SERIES ? "serie" : "film"));
         rating.getStyleClass().add("darkText");
+
         Text genre = new Text("Genre: " + String.join(", ", Arrays.asList(media.getGenres())));
         genre.getStyleClass().add("darkText");
 
