@@ -56,7 +56,6 @@ public class MediaCard implements Renderable {
                 imagePlaceholderError.wrappingWidthProperty().set(100);
                 container.setTop(imagePlaceholderError);
             }
-
         } finally {
             if (inputStream != null) {
                 Image image = new Image(inputStream);
@@ -67,7 +66,6 @@ public class MediaCard implements Renderable {
                 container.setBackground(new Background(myBI));
             }
         }
-
 
         container.getStyleClass().add("MediaCardContainer");
 
@@ -81,8 +79,9 @@ public class MediaCard implements Renderable {
         HBox actions = new HBox();
 
         if (isButtonVisible) {
-            Button detailsButton = new Button("Detaljer");
             playButton.getStyleClass().add("MediaCardButton");
+
+            Button detailsButton = new Button("Detaljer");
             detailsButton.getStyleClass().add("MediaCardButton");
             detailsButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> new MediaDetailsView(media));
             Region expandRegion = new Region();
@@ -90,13 +89,12 @@ public class MediaCard implements Renderable {
             actions.getChildren().addAll(expandRegion, detailsButton);
 
             Text mediaTitle = new Text(media.getTitle());
-
             mediaTitle.setWrappingWidth(150);
             mediaTitle.wrappingWidthProperty().set(150);
             mediaTitle.getStyleClass().add(!hasImage ? "MediaCardTitle" : "AlwaysTitle");
-            container.setTop(mediaTitle);
             mediaTitle.setCache(true);
             mediaTitle.setCacheHint(CacheHint.SPEED);
+            container.setTop(mediaTitle);
         }
 
         container.setBottom(actions);

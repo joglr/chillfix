@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.NoSuchFileException;
+import models.NullRootException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,11 +34,9 @@ public class RootController {
         primaryStage.show();
     }
 
-    public static void setCurrentRoot(Parent root) {
+    public static void setCurrentRoot(Parent root) throws NullRootException {
         if (root == null) {
-            //TODO: Introducer exception
-            System.out.println("*** root cannot be null");
-            return;
+            throw new NullRootException("*** root cannot be null");
         }
         globalScene.setRoot(root);
         RootController.globalScene.setRoot(root);
