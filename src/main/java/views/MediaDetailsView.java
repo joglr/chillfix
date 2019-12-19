@@ -132,7 +132,7 @@ class MediaDetailsView {
                 for (int ii = 0; ii < i; ii++) {
                     int episodeNum = ii + 1;
                     // Tilføj et nul foran episoder der er mindre end 10
-                    Button episodeButton = new Button("E" + (episodeNum < 9 ? "0" : "") + (episodeNum));
+                    Button episodeButton = new Button("E" + (episodeNum < 10 ? "0" : "") + (episodeNum));
                     episodeButton.getStyleClass().add("DarkButton");
                     episodeButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
                         episodeButton.styleProperty().set("-fx-border-color: blue;");

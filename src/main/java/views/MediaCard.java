@@ -39,9 +39,7 @@ public class MediaCard implements Renderable {
         container.setPrefHeight(200);
         container.setPrefWidth(150);
 
-
         InputStream inputStream = null;
-
         boolean hasImage = false;
 
         try {
