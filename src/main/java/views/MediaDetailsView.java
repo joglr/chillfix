@@ -17,7 +17,6 @@ import models.Media;
 import models.MyListFilter;
 import models.Series;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 class MediaDetailsView {
@@ -47,11 +46,7 @@ class MediaDetailsView {
         Button backButton = new Button("Tilbage");
         bottomButtons.getChildren().add(backButton);
         backButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
-            try {
-                new HomeView();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            new HomeView();
         });
 
         MediaCard mediaCard = new MediaCard(media, false);

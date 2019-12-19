@@ -99,17 +99,8 @@ public class HomeViewController implements Initializable {
             filterResult.add(media);
 
         }
+        // Display relevant message to the user
         resultsLabel.setText(filterResult.size() == 0 ? "Ingen resultater" : "Viser " + Math.min(MAX_RENDER_COUNT, filterResult.size()) + " ud af " + filterResult.size() + " resultater");
-//        Label text = new Label();
-//        VBox textContainer = new VBox();
-//        textContainer.alignmentProperty().set(Pos.TOP_CENTER);
-//        textContainer.setFillWidth(true);
-//        VBox.setVgrow(textContainer, Priority.ALWAYS);
-//        textContainer.getChildren().add(text);
-
-//        mediaContainer.widthProperty().addListener(( o) -> textContainer.setPrefWidth(mediaContainer.getWidth()));
-//        text.getStyleClass().add("darkText");
-//        mediaContainer.getChildren().add(textContainer);
 
         int renderCount = 0;
         for (Media m : filterResult) {
