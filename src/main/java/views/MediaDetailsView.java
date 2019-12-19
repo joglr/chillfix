@@ -82,12 +82,12 @@ class MediaDetailsView {
         Text title = new Text(media.getTitle().toUpperCase());
         title.setStyle("-fx-font-size: 25px");
         title.getStyleClass().add("darkText");
-        title.wrappingWidthProperty().setValue(400);
+        title.wrappingWidthProperty().setValue(540);
 
         Text description = new Text(media.getDescription());
         description.getStyleClass().add("darkText");
-        description.setStyle("-fx-font-style: italic");
-        description.wrappingWidthProperty().setValue(400);
+        description.setStyle("-fx-font-style: italic; -fx-font-size: 13");
+        description.wrappingWidthProperty().setValue(550);
 
         Text year = new Text("Årstal: " + media.getYear());
         year.getStyleClass().add("darkText");
@@ -98,7 +98,7 @@ class MediaDetailsView {
         Text genre = new Text("Genre: " + String.join(", ", Arrays.asList(media.getGenres())));
         genre.getStyleClass().add("darkText");
 
-        container.setMaxWidth(600);
+        container.setMaxWidth(700);
         container.setPrefHeight(400);
         container.setMaxHeight(800);
 
@@ -116,13 +116,14 @@ class MediaDetailsView {
             Series series = (Series) media;
             int seasonCounter = 1;
             for (int i : series.getSeasons()) {
-                HBox season = new HBox();
+                VBox season = new VBox();
                 FlowPane episodes = new FlowPane();
-                episodes.getStyleClass().add("border");
                 season.setAlignment(Pos.CENTER_LEFT);
-                Text seasonText = new Text("Sæson " + seasonCounter + ":");
+                Text seasonText = new Text("Sæson " + seasonCounter);
                 seasonText.styleProperty().set("-fx-font-weight: bold");
-                season.paddingProperty().set(new Insets(8));
+                season.setSpacing(8);
+                episodes.setHgap(8);
+                episodes.setVgap(8);
 
                 seasonText.getStyleClass().add("darkText");
                 season.getChildren().add(seasonText);
@@ -130,11 +131,9 @@ class MediaDetailsView {
 
                 for (int ii = 0; ii < i; ii++) {
                     Button episodeButton = new Button("" + (ii + 1));
-                    episodeButton.styleProperty().set("-fx-margin: 8px");
                     episodeButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
                         episodeButton.styleProperty().set("-fx-background-color: blue;");
                     });
-                    FlowPane.setMargin(episodeButton, new Insets(8));
                     episodes.getChildren().add(episodeButton);
                 }
                 left.getChildren().add(season);

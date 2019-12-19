@@ -42,13 +42,14 @@ public class MediaCard implements Renderable {
 
         InputStream inputStream = null;
 
+        boolean hasImage = false;
+
         try {
             inputStream = (RootController.getURLAsStream(media.getPosterFilePath()));
         } catch (NoSuchFileException e) {
             try {
                 inputStream = RootController.getURLAsStream("data/img/PlaceholderThumbnail.png");
-
-
+                hasImage = true;
             } catch (NoSuchFileException e2) {
                 Text imagePlaceholderError = new Text("Error: Could not load poster placeholder");
                 imagePlaceholderError.getStyleClass().add("darkText");
@@ -92,7 +93,7 @@ public class MediaCard implements Renderable {
 
             mediaTitle.setWrappingWidth(150);
             mediaTitle.wrappingWidthProperty().set(150);
-            mediaTitle.getStyleClass().add("MediaCardTitle");
+            mediaTitle.getStyleClass().add(!hasImage ? "MediaCardTitle" : "AlwaysTitle");
             container.setTop(mediaTitle);
             mediaTitle.setCache(true);
             mediaTitle.setCacheHint(CacheHint.SPEED);

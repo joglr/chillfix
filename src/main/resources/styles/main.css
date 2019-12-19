@@ -19,9 +19,9 @@
 }
 
 .MediaCardContainer {
-    /*-fx-padding: 8px;*/
+    -fx-padding: 8px;
 
-    -fx-padding: 80px 8px 8px;
+    /*-fx-padding: 80px 8px 8px;*/
     -fx-border-radius: 8px;
 }
 
@@ -48,7 +48,7 @@
     visibility: visible;
 }
 
-.MediaCardTitle {
+.MediaCardTitle, .AlwaysTitle {
     -fx-opacity: 0;
     -fx-text-alignment: center;
     -fx-font-weight: bolder;
@@ -56,6 +56,10 @@
     -fx-stroke-type: outside;
     -fx-stroke-width: 2px;
     -fx-stroke: white;
+}
+
+.AlwaysTitle {
+    -fx-opacity: 1;
 }
 
 .MediaCardContainer:hover .MediaCardTitle {

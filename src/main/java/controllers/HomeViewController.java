@@ -99,7 +99,7 @@ public class HomeViewController implements Initializable {
             filterResult.add(media);
 
         }
-        resultsLabel.setText(filterResult.size() == 0 ? "Ingen resultater" : "Viser " + Math.min(MAX_RENDER_COUNT, filterResult.size()) + " ud af " + filterResult.size());
+        resultsLabel.setText(filterResult.size() == 0 ? "Ingen resultater" : "Viser " + Math.min(MAX_RENDER_COUNT, filterResult.size()) + " ud af " + filterResult.size() + " resultater");
 //        Label text = new Label();
 //        VBox textContainer = new VBox();
 //        textContainer.alignmentProperty().set(Pos.TOP_CENTER);
