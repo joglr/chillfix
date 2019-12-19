@@ -102,6 +102,9 @@ class MediaDetailsView {
 
                     Button episodeButton = new Button("E" + (ii + 1));
                     episodeButton.styleProperty().set("-fx-margin: 8px");
+                    episodeButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
+                        episodeButton.styleProperty().set("-fx-background-color: blue;");
+                    });
                     season.getChildren().add(episodeButton);
                 }
                 left.getChildren().add(season);

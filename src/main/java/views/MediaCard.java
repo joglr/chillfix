@@ -67,6 +67,9 @@ public class MediaCard implements Renderable {
         container.getStyleClass().add("MediaCardContainer");
 
         Button playButton = new Button("▶");
+        playButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
+            playButton.styleProperty().set("-fx-background-color: blue;");
+        });
         playButton.getStyleClass().add("MediaPlayButton");
         container.setCenter(playButton);
 
