@@ -15,6 +15,6 @@ public class Movie extends Media {
 
     @Override
     public String getPosterFilePath() {
-        return "data/img/movie_thumbs/" + super.getPosterFileName();
+        return "data/img/movie_posters/" + super.getPosterFileName();
     }
 }

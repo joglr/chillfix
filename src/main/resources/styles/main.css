@@ -58,6 +58,12 @@
     -fx-stroke: white;
 }
 
+.DarkButton {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: #fff;
+}
+
 .AlwaysTitle {
     -fx-opacity: 1;
 }
@@ -82,7 +88,7 @@
     -fx-padding: 8px;
 }
 
-.border {
+.border, .DarkButton {
     -fx-border-color: #cbcbcb;
     -fx-border-radius: 8px;
 }

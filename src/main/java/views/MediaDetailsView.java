@@ -130,9 +130,12 @@ class MediaDetailsView {
                 season.getChildren().add(episodes);
 
                 for (int ii = 0; ii < i; ii++) {
-                    Button episodeButton = new Button("" + (ii + 1));
+                    int episodeNum = ii + 1;
+                    // Tilføj et nul foran episoder der er mindre end 10
+                    Button episodeButton = new Button("E" + (episodeNum < 9 ? "0" : "") + (episodeNum));
+                    episodeButton.getStyleClass().add("DarkButton");
                     episodeButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
-                        episodeButton.styleProperty().set("-fx-background-color: blue;");
+                        episodeButton.styleProperty().set("-fx-border-color: blue;");
                     });
                     episodes.getChildren().add(episodeButton);
                 }

@@ -19,6 +19,6 @@ public class Series extends Media {
 
     @Override
     public String getPosterFilePath() {
-        return "data/img/series_thumbs/" + super.getPosterFileName();
+        return "data/img/series_posters/" + super.getPosterFileName();
     }
 }
