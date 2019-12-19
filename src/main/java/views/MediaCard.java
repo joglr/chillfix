@@ -2,9 +2,9 @@ package views;
 
 import controllers.RootController;
 import javafx.event.ActionEvent;
+import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -36,6 +36,8 @@ public class MediaCard implements Renderable {
 
         container.setPrefHeight(200);
         container.setPrefWidth(150);
+        container.setPrefHeight(200);
+        container.setPrefWidth(150);
 
 
         InputStream inputStream = null;
@@ -45,11 +47,13 @@ public class MediaCard implements Renderable {
         } catch (NoSuchFileException e) {
             try {
                 inputStream = RootController.getURLAsStream("data/img/PlaceholderThumbnail.png");
+
+
             } catch (NoSuchFileException e2) {
-                Text imagePlaceholder = new Text("Error: Could not load poster placeholder");
-                imagePlaceholder.getStyleClass().add("darkText");
-                imagePlaceholder.wrappingWidthProperty().set(100);
-                container.setTop(imagePlaceholder);
+                Text imagePlaceholderError = new Text("Error: Could not load poster placeholder");
+                imagePlaceholderError.getStyleClass().add("darkText");
+                imagePlaceholderError.wrappingWidthProperty().set(100);
+                container.setTop(imagePlaceholderError);
             }
 
         } finally {
@@ -76,14 +80,22 @@ public class MediaCard implements Renderable {
         HBox actions = new HBox();
 
         if (isButtonVisible) {
-            Tooltip.install(container, new Tooltip(media.getTitle()));
             Button detailsButton = new Button("Detaljer");
             playButton.getStyleClass().add("MediaCardButton");
             detailsButton.getStyleClass().add("MediaCardButton");
             detailsButton.addEventHandler(ActionEvent.ACTION, (ActionEvent event) -> new MediaDetailsView(media));
             Region expandRegion = new Region();
             HBox.setHgrow(expandRegion, Priority.ALWAYS);
-            actions.getChildren().addAll(detailsButton, expandRegion);
+            actions.getChildren().addAll(expandRegion, detailsButton);
+
+            Text mediaTitle = new Text(media.getTitle());
+
+            mediaTitle.setWrappingWidth(150);
+            mediaTitle.wrappingWidthProperty().set(150);
+            mediaTitle.getStyleClass().add("MediaCardTitle");
+            container.setTop(mediaTitle);
+            mediaTitle.setCache(true);
+            mediaTitle.setCacheHint(CacheHint.SPEED);
         }
 
         container.setBottom(actions);

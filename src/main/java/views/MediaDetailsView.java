@@ -5,6 +5,7 @@ import controllers.RootController;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
@@ -23,15 +24,11 @@ class MediaDetailsView {
 
     public MediaDetailsView(Media media) {
         BorderPane root = new BorderPane();
-        root.getStyleClass().add("dark");
-        root.getStyleClass().add("ScrollPane");
-
-        ScrollPane wrapper = new ScrollPane();
+        root.getStyleClass().addAll("dark", "padding");
         BorderPane container = new BorderPane();
         container.getStyleClass().add("bordered");
 
-        wrapper.setContent(container);
-        root.setCenter(wrapper);
+        root.setCenter(container);
 
         ScrollPane leftWrapper = new ScrollPane();
         leftWrapper.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -43,10 +40,12 @@ class MediaDetailsView {
         leftWrapper.setContent(left);
         VBox right = new VBox();
         HBox bottomButtons = new HBox();
-        container.setBottom(bottomButtons);
+        bottomButtons.setSpacing(8);
+        bottomButtons.setPadding(new Insets(8));
 
         // Knap 'Tilbage' og eventhandler til knappen, igennem en lambda expression
         Button backButton = new Button("Tilbage");
+        bottomButtons.getChildren().add(backButton);
         backButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
             try {
                 new HomeView();
@@ -99,15 +98,19 @@ class MediaDetailsView {
         Text genre = new Text("Genre: " + String.join(", ", Arrays.asList(media.getGenres())));
         genre.getStyleClass().add("darkText");
 
-        container.setTop(backButton);
+        container.setMaxWidth(600);
+        container.setPrefHeight(400);
+        container.setMaxHeight(800);
+
         container.setLeft(leftWrapper);
-        container.setMaxWidth(800);
-        container.setMaxHeight(400);
         container.setRight(right);
+        container.setBottom(bottomButtons);
 
         left.setSpacing(5);
         left.getChildren().addAll(title, description, year, rating, genre);
-        right.getChildren().add(mediaCard.render());
+        Node mediaCardNode = mediaCard.render();
+        mediaCardNode.getStyleClass().add("bordered");
+        right.getChildren().add(mediaCardNode);
 
         if (media.getType() == Media.Type.SERIES) {
             Series series = (Series) media;
@@ -124,8 +127,6 @@ class MediaDetailsView {
                 seasonText.getStyleClass().add("darkText");
                 season.getChildren().add(seasonText);
                 season.getChildren().add(episodes);
-//                season.setFitToWidth(true);
-//                episodes.setSpacing(8);
 
                 for (int ii = 0; ii < i; ii++) {
                     Button episodeButton = new Button("" + (ii + 1));
@@ -133,7 +134,7 @@ class MediaDetailsView {
                     episodeButton.addEventHandler(ActionEvent.ACTION, (ActionEvent e) -> {
                         episodeButton.styleProperty().set("-fx-background-color: blue;");
                     });
-                    episodes.setMargin(episodeButton, new Insets(8));
+                    FlowPane.setMargin(episodeButton, new Insets(8));
                     episodes.getChildren().add(episodeButton);
                 }
                 left.getChildren().add(season);
@@ -141,7 +142,6 @@ class MediaDetailsView {
             }
         }
 
-//        left.getChildren().addAll(expandRegion);
         RootController.setCurrentRoot(root);
     }
 }

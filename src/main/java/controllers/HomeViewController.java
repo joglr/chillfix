@@ -3,7 +3,6 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import models.*;
@@ -31,6 +30,9 @@ public class HomeViewController implements Initializable {
     ToggleButton showSeriesButton;
     @FXML
     ChoiceBox genreChoiceBox;
+    @FXML
+    Label resultsLabel;
+
     private Filter typeFilter;
     private Filter genreFilter;
     private Filter searchFilter;
@@ -85,24 +87,36 @@ public class HomeViewController implements Initializable {
      * (Re)renders filtered media items from mediaList into mediaContainer
      */
     private void displayMedia() {
-        int renderCount = 0;
+        final int MAX_RENDER_COUNT = 20;
         mediaContainer.getChildren().clear();
+        List<Media> filterResult = new ArrayList<>();
         for (Media media : mediaList) {
-            if (renderCount > 50) break;
             if ((typeFilter != null && !typeFilter.matches(media)) ||
                     (genreFilter != null && !genreFilter.matches(media)) ||
                     (searchFilter != null && !searchFilter.matches(media)) ||
                     (myListFilter != null && !myListFilter.matches(media))) continue;
 
-            MediaCard mediaCard = new MediaCard(media);
-            Node node = mediaCard.render();
-            mediaContainer.getChildren().add(node);
-            renderCount++;
+            filterResult.add(media);
+
         }
-        if (renderCount == 0) {
-            Label text = new Label("Ingen resultater");
-            text.getStyleClass().add("darkText");
-            mediaContainer.getChildren().add(text);
+        resultsLabel.setText(filterResult.size() == 0 ? "Ingen resultater" : "Viser " + Math.min(MAX_RENDER_COUNT, filterResult.size()) + " ud af " + filterResult.size());
+//        Label text = new Label();
+//        VBox textContainer = new VBox();
+//        textContainer.alignmentProperty().set(Pos.TOP_CENTER);
+//        textContainer.setFillWidth(true);
+//        VBox.setVgrow(textContainer, Priority.ALWAYS);
+//        textContainer.getChildren().add(text);
+
+//        mediaContainer.widthProperty().addListener(( o) -> textContainer.setPrefWidth(mediaContainer.getWidth()));
+//        text.getStyleClass().add("darkText");
+//        mediaContainer.getChildren().add(textContainer);
+
+        int renderCount = 0;
+        for (Media m : filterResult) {
+            if (renderCount > MAX_RENDER_COUNT) break;
+            MediaCard mediaCard = new MediaCard(m);
+            mediaContainer.getChildren().add(mediaCard.render());
+            renderCount++;
         }
     }
 

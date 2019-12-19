@@ -1,5 +1,6 @@
 .dark {
     -fx-background-color: #000;
+    -fx-background: #000;
 }
 
 .darkText {
@@ -14,10 +15,13 @@
 .MediaCard {
     -fx-padding: 8px;
     -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
 }
 
 .MediaCardContainer {
-    -fx-padding: 8px;
+    /*-fx-padding: 8px;*/
+
+    -fx-padding: 80px 8px 8px;
     -fx-border-radius: 8px;
 }
 
@@ -44,6 +48,19 @@
     visibility: visible;
 }
 
+.MediaCardTitle {
+    -fx-opacity: 0;
+    -fx-text-alignment: center;
+    -fx-font-weight: bolder;
+    -fx-font-size: 15px;
+    -fx-stroke-type: outside;
+    -fx-stroke-width: 2px;
+    -fx-stroke: white;
+}
+
+.MediaCardContainer:hover .MediaCardTitle {
+    -fx-opacity: 1;
+}
 
 .MediaGenreChoicebox {
     -fx-text-fill: blue;
@@ -54,6 +71,10 @@
 .bordered {
     -fx-border-color: #cbcbcb;
     -fx-border-radius: 8px;
+    -fx-padding: 8px;
+}
+
+.padding {
     -fx-padding: 8px;
 }
 
@@ -68,4 +89,5 @@
     -fx-background-color: #000;
     -fx-border-color: transparent;
     -fx-border-width: 0px;
+
 }

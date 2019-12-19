@@ -29,6 +29,7 @@ public class RootController {
         primaryStage.setScene(globalScene);
         //indlæsning af css fil
         globalScene.getStylesheets().add(rootClass.getClassLoader().getResource("styles/main.css").toExternalForm());
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
