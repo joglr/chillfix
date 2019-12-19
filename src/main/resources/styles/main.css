@@ -56,3 +56,16 @@
     -fx-border-radius: 8px;
     -fx-padding: 8px;
 }
+
+.border {
+    -fx-border-color: #cbcbcb;
+    -fx-border-radius: 8px;
+}
+
+.ScrollPane {
+
+    -fx-background: #000;
+    -fx-background-color: #000;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
+}
