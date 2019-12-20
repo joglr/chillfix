@@ -1,51 +1,46 @@
-# Chill Fix
+# Chillfix
 
-## Kom godt i gang
+## Sådan kører du programmet
 
-### 1/3 Installer JavaFX
-1. [Download JavaFX \<Platform\> SDK	](https://gluonhq.com/products/javafx/) (vælg versionen der passer til dit styresystem under Latest Releases)
-1. Pak indholdet af zip filen ud i din JAVA_HOME mappe. Denne sti er enten
-   * `C:\Program Files\Java` eller
-   * `C:\Program Files (x86)\Java`
-1. Åben den nyudpakkede `javafx-sdk` mappe og åben undermappen `lib`
-1. Kopier denne sti til senere brug
-1. Clone dette repository med git
-1. Åben projektet i IntelliJ
-1. Åben menuen `File > Project Structure > Libraries`
-1. Klik på `+` knappen og vælg `Java`
-1. Indsæt stien du kopierede tidligere til `java-fx\lib` og tryk `enter` og `OK`
+Programmet er udviklet til at virke med [Oracle Java 8 JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), så sørg derfor at det er denne version der er installeret og valgt som standard på din computer.
+Dette kan tjekkes ved at åbne et terminal vindue og skrive kommandoen `java -version`
+På denne komputer giver det anledning til følgende output:
+```
+java version "1.8.0_231"
+Java(TM) SE Runtime Environment (build 1.8.0_231-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.231-b11, mixed mode)
+```
 
-### 2/3 Opsæt IntelliJ konfiguration
+Såfremt overstående krav er opfyldt, køres applikationen ved at dobbeltklikke på `.jar` filen.
+Hvis der ikke sker noget, skyldes det muligvis at der er intalleret flere forskellige java versioner.
+Som alternativ, kan applikationen derfor køres ved at man i en terminal 
+der peger på denne mappe, kører følgende kommando:
 
-Mac:
-1. Kopier følgende kommandoer og indsæt den i IntelliJ terminalen, alt efter dit styresystem og tryk enter:
+```
+java -jar target/chillfix-1.0-SNAPSHOT.jar
+``` 
 
-**Windows:**
+## Vejledning til videreudvikling og oprettelse af produktionsudgave
 
-    git checkout windows -- .idea/runConfigurations/Main.xml.ignore .idea/libraries/lib.xml.ignore
-    mv .idea/runConfigurations/Main.xml.ignore .idea/runConfigurations/Main.xml
-    mv .idea/libraries/lib.xml.ignore .idea/libraries/lib.xml
+### Udvikling 
+For at køre Chillfix i udviklertilstand, anvendes eksempelvis [IntelliJ IDEA]
 
-**Mac:**
-
-    git checkout mac -- .idea/runConfigurations/Main.xml.ignore .idea/libraries/lib.xml.ignore
-    mv .idea/runConfigurations/Main.xml.ignore .idea/runConfigurations/Main.xml
-    mv .idea/libraries/lib.xml.ignore .idea/libraries/lib.xml
-
-2. Derefter klikker du på `Add configuration` og vælger `Application > Main` og trykker `OK`
-
-
-### 3/3 Kør projektet
+1. Opret en ny
 1. Kør projektet i `IntelliJ` ved at trykke på den grønne trekant `▶` knap
 1. Applikationen skulle gerne åbne i et nyt vindue
 
-## Jar oprettelse
-For at oprette en jar fil, kræver det at Maven er installeret.
-Derefter kan følge kommando køres, for at oprette en jar.
-```$xslt
-mvn compile && mvn package
+## Produktion
+
+For at oprette en produktionsudgave af Chillfix i en enkeltstående `.jar` fil, kan man med fordel anvende [Maven](https://maven.apache.org/). 
+
+Tidligere nævnte krav for projektet gælder stadig.
+
+Med maven bygges projektet med følgende kommando:
 ```
-Derefter kan jar filen køres med
+mvn package
 ```
-java -jar target/chillfix-1.0-SNAPSHOT.jar
-```
+Dette producerer en `chillfix<VERSION>.jar` fil i mappen `target` (se understående), såfremt den rigtige java version anvendes. 
+
+<img src="https://github.itu.dk/storage/user/2778/files/1baf6480-22f6-11ea-9d7c-f358419499ff" alt="target\chillfix-1.0-SNAPSHOT.jar">
+
+Herefter kan denne fil køres, som beskrevet i  `Sådan kører du programmet` afsnittet.
